@@ -33,7 +33,7 @@ All the strings of list1 are unique.
 All the strings of list2 are unique.
 There is at least a common string between list1 and list2.
 """
-# TODO
+# TODO issue with tests cases?
 from typing import List
 
 
