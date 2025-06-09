@@ -59,7 +59,6 @@ Output:
 +------+
 Explanation: There are no single numbers in the input table so we return null.
 """
-# TODO
 # SELECT max(t.num) as num
 # FROM (
 #   SELECT num
