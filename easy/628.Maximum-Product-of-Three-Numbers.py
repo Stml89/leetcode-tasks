@@ -18,7 +18,6 @@ Constraints:
 3 <= nums.length <= 104
 -1000 <= nums[i] <= 1000
 """
-# TODO
 from typing import List
 
 
@@ -26,10 +25,11 @@ def maximumProduct(nums: List[int]) -> int:
     if not nums:
         return 0
 
-    nums.sort(reverse=True)
-    return nums[0] * nums[1] * nums[2]
+    nums.sort()
+    return max(nums[0] * nums[1] * nums[-1], nums[-1] * nums[-2] * nums[-3])
 
 
 assert maximumProduct([1, 2, 3]) == 6
 assert maximumProduct([1, 2, 3, 4]) == 24
 assert maximumProduct([-1, -2, -3]) == -6
+assert maximumProduct([-100, -98, -1, 2, 3, 4]) == 39200
