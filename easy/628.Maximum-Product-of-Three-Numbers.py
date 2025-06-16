@@ -18,6 +18,7 @@ Constraints:
 3 <= nums.length <= 104
 -1000 <= nums[i] <= 1000
 """
+import heapq
 from typing import List
 
 
@@ -25,8 +26,12 @@ def maximumProduct(nums: List[int]) -> int:
     if not nums:
         return 0
 
-    nums.sort()
-    return max(nums[0] * nums[1] * nums[-1], nums[-1] * nums[-2] * nums[-3])
+    # nums.sort()
+    # return max(nums[0] * nums[1] * nums[-1], nums[-1] * nums[-2] * nums[-3])
+    max1, max2, max3 = heapq.nlargest(3, nums)
+    min1, min2 = heapq.nsmallest(2, nums)
+
+    return max(max1 * max2 * max3, min1 * min2 * max1)
 
 
 assert maximumProduct([1, 2, 3]) == 6
