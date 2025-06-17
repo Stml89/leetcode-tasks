@@ -42,20 +42,25 @@ n == img[i].length
 1 <= m, n <= 200
 0 <= img[i][j] <= 255
 """
+# TODO
 from typing import List
 
 
 def imageSmoother(img: List[List[int]]) -> List[List[int]]:
-    output = 0
+    m, n = len(img), len(img[0])
+    output = [[0] * n for _ in range(m)]
 
-    for i in range(len(img)):
-        for j in range(len(img[0])):
-            if img[i][j] == 1:
-                output += 4
-                if i > 0 and img[i - 1][j] == 1:
-                    output -= 2
-                if j > 0 and img[i][j - 1] == 1:
-                    output -= 2
+    for i in range(m):
+        for j in range(n):
+            ans = cnt = 0
+            for m_row in range(i - 1, i + 2):
+                for n_col in range(j - 1, j + 2):
+                    if 0 <= m_row < m and 0 <= n_col < n:
+                        cnt += 1
+                        ans += img[m_row][n_col]
+
+            output[i][j] = ans // cnt
+
     return output
 
 

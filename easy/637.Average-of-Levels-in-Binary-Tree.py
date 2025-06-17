@@ -27,7 +27,6 @@ Constraints:
 The number of nodes in the tree is in the range [1, 104].
 -231 <= Node.val <= 231 - 1
 """
-# TODO
 from typing import List, Optional
 
 
@@ -44,7 +43,7 @@ class Solution:
             return []
         r = []
 
-        def inner(node: Optional[TreeNode], level):
+        def inner(node, level):
             if not node:
                 return
 
