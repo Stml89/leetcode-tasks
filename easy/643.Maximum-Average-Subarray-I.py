@@ -18,20 +18,18 @@ n == nums.length
 1 <= k <= n <= 105
 -104 <= nums[i] <= 104
 """
-# TODO
 from typing import List
 
 
 def findMaxAverage(nums: List[int], k: int) -> float:
-    if len(nums) == k:
-        return sum(nums) / k
-    start, m_avg = 0, 0
-    while start + k <= len(nums):
-        s = sum(nums[start:k + start]) / k
-        if m_avg < s:
-            m_avg = s
-        start += 1
-    return m_avg
+    current_sum = sum(nums[:k])
+    max_sum = current_sum
+
+    for i in range(k, len(nums)):
+        current_sum += nums[i] - nums[i - k]
+        max_sum = max(max_sum, current_sum)
+
+    return max_sum / k
 
 
 assert findMaxAverage([1, 12, -5, -6, 50, 3], k=4) == 12.75000

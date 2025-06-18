@@ -42,7 +42,19 @@ class TreeNode:
 
 class Solution:
     def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
-        pass
+        values = set()
+
+        def inner(node):
+            if not node:
+                return
+            values.add(node.val)
+            inner(node.left)
+            inner(node.right)
+
+        inner(root)
+        if len(values) == 1:
+            return -1
+        return list(values)[1]
 
 
 root1 = TreeNode(2)
