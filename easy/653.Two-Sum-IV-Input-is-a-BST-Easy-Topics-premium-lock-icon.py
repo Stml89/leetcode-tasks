@@ -27,7 +27,6 @@ The number of nodes in the tree is in the range [1, 104].
 root is guaranteed to be a valid binary search tree.
 -105 <= k <= 105
 """
-# TODO
 from typing import Optional
 
 
@@ -40,27 +39,39 @@ class TreeNode:
 
 class Solution:
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-        l = []
+        # l = []
+        #
+        # def inner(node):
+        #     if not node:
+        #         return
+        #     l.append(node.val)
+        #     inner(node.left)
+        #     inner(node.right)
+        #
+        # inner(root)
+        # curr = 0
+        # point = 1
+        # while curr != len(l) - 1:
+        #     if (l[curr] + l[point]) == k:
+        #         return True
+        #     if point < len(l) - 1:
+        #         point += 1
+        #     else:
+        #         curr += 1
+        #         point = curr + 1
+        # return False
+        # =================================
+        seen = set()
 
         def inner(node):
             if not node:
-                return
-            l.append(node.val)
-            inner(node.left)
-            inner(node.right)
-
-        inner(root)
-        curr = 0
-        point = 1
-        while curr != len(l) - 1:
-            if (l[curr] + l[point]) == k:
+                return False
+            if k - node.val in seen:
                 return True
-            if point < len(l) - 1:
-                point += 1
-            else:
-                curr += 1
-                point = curr + 1
-        return False
+            seen.add(node.val)
+            return inner(node.left) or inner(node.right)
+
+        return inner(root)
 
 
 root = TreeNode(5)
