@@ -1,4 +1,4 @@
-"""
+""" # TODO example
 657. Robot Return to Origin
 There is a robot starting at the position (0, 0), the origin, on a 2D plane. Given a sequence of its moves, judge
 if this robot ends up at (0, 0) after it completes its moves.
@@ -26,23 +26,25 @@ moves only contains the characters 'U', 'D', 'L' and 'R'.
 """
 
 def judgeCircle(moves: str) -> bool:
-    positions = {'x': 0, 'y': 0}
-    for step in moves:
-        match step:
-            case 'U':
-                positions['y'] += 1
-            case 'D':
-                positions['y'] -= 1
-            case 'L':
-                positions['x'] -= 1
-            case 'R':
-                positions['x'] += 1
-            case _:
-                raise AssertionError(f"Wrong input {step}")
-
-    if positions.get('x') == 0 and positions.get('y') == 0:
-        return True
-    return False
+    # positions = {'x': 0, 'y': 0}
+    # for step in moves:
+    #     match step:
+    #         case 'U':
+    #             positions['y'] += 1
+    #         case 'D':
+    #             positions['y'] -= 1
+    #         case 'L':
+    #             positions['x'] -= 1
+    #         case 'R':
+    #             positions['x'] += 1
+    #         case _:
+    #             raise AssertionError(f"Wrong input {step}")
+    #
+    # if positions.get('x') == 0 and positions.get('y') == 0:
+    #     return True
+    # return False
+    # =======================
+    return moves.count('L') == moves.count('R') and moves.count('U') == moves.count('D')
 
 
 assert judgeCircle("UD")
