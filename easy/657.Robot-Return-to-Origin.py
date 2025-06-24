@@ -25,8 +25,6 @@ Constraints:
 moves only contains the characters 'U', 'D', 'L' and 'R'.
 """
 
-
-# TODO
 def judgeCircle(moves: str) -> bool:
     positions = {'x': 0, 'y': 0}
     for step in moves:
