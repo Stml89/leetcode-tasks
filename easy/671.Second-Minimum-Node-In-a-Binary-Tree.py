@@ -66,7 +66,12 @@ root2 = TreeNode(2)
 root2.left = TreeNode(2)
 root2.right = TreeNode(2)
 
+root3 = TreeNode(5)
+root3.left = TreeNode(8)
+root3.right = TreeNode(5)
+
 s = Solution()
 
 assert s.findSecondMinimumValue(root1) == 5
 assert s.findSecondMinimumValue(root2) == -1
+assert s.findSecondMinimumValue(root3) == 8
