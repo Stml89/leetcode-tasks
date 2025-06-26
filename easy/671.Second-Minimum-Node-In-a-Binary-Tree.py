@@ -29,7 +29,6 @@ The number of nodes in the tree is in the range [1, 25].
 1 <= Node.val <= 231 - 1
 root.val == min(root.left.val, root.right.val) for each internal node of the tree.
 """
-# TODO
 from typing import Optional
 
 
@@ -54,7 +53,7 @@ class Solution:
         inner(root)
         if len(values) == 1:
             return -1
-        return list(values)[1]
+        return list(sorted(values))[1]
 
 
 root1 = TreeNode(2)
