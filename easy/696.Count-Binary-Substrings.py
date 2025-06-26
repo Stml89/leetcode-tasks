@@ -23,10 +23,24 @@ s[i] is either '0' or '1'.
 Hint 1
 How many valid binary substrings exist in "000111", and how many in "11100"? What about "00011100"?
 """
-
-
+# TODO
 def countBinarySubstrings(s: str) -> int:
-    pass
+    groups = []
+    cnt = 1
+
+    for i in range(1, len(s)):
+        if s[i] == s[i - 1]:
+            cnt += 1
+        else:
+            groups.append(cnt)
+            cnt = 1
+    groups.append(cnt)
+
+    ans = 0
+    for i in range(len(groups) - 1):
+        ans += min(groups[i], groups[i + 1])
+
+    return ans
 
 
 assert countBinarySubstrings("00110011") == 6
