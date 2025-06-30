@@ -1,5 +1,6 @@
 """
 674. Longest Continuous Increasing Subsequence
+
 Given an unsorted array of integers nums, return the length of the longest continuous increasing subsequence
 (i.e. subarray). The subsequence must be strictly increasing.
 A continuous increasing subsequence is defined by two indices l and r (l < r) such that it is [nums[l], nums[l + 1],
@@ -22,27 +23,37 @@ Constraints:
 1 <= nums.length <= 104
 -109 <= nums[i] <= 109
 """
-# TODO
 from typing import List
 
 
 def findLengthOfLCIS(nums: List[int]) -> int:
-    if not nums:
-        return 0
+    # if not nums:
+    #     return 0
+    #
+    # if len(set(nums)) == 1:
+    #     return 1
+    #
+    # prev = count = indx = max_count = 0
+    #
+    # while indx <= len(nums) - 1:
+    #     if nums[indx] <= prev:
+    #         max_count = max(max_count, count)
+    #         count = 0
+    #     count += 1
+    #     prev = nums[indx]
+    #     indx += 1
+    #
+    # return max(max_count, count)
+    max_count = 1
+    count = 1
 
-    if len(set(nums)) == 1:
-        return 1
-
-    prev = count = indx = 0
-
-    while indx <= len(nums) - 1:
-        if nums[indx] < prev:
-            break
-        count += 1
-        prev = nums[indx]
-        indx += 1
-
-    return count
+    for i in range(1, len(nums)):
+        if nums[i] > nums[i - 1]:
+            count += 1
+        else:
+            count = 1
+        max_count = max(max_count, count)
+    return max_count
 
 
 assert findLengthOfLCIS([1, 3, 5, 4, 7]) == 3
@@ -50,3 +61,5 @@ assert findLengthOfLCIS([2, 2, 2, 2, 2]) == 1
 assert findLengthOfLCIS([1, 2, 3, 4, 5]) == 5
 assert findLengthOfLCIS([]) == 0
 assert findLengthOfLCIS([1, 0]) == 1
+assert findLengthOfLCIS([1, 3, 5, 4, 2, 3, 4, 5]) == 4
+assert findLengthOfLCIS([1, 1, 2]) == 2
