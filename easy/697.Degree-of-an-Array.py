@@ -27,8 +27,7 @@ nums[i] will be an integer between 0 and 49,999.
 Hint 1
 Say 5 is the only element that occurs the most number of times - for example, nums = [1, 5, 2, 3, 5, 4, 5, 6]. What is the answer?
 """
-# TODO
-from collections import Counter
+from collections import Counter, defaultdict
 from typing import List
 
 
@@ -40,7 +39,7 @@ def findShortestSubArray(nums: List[int]) -> int:
         if v == m:
             m_items.append(k)
 
-    minn = 1
+    minn = float("inf")
     maxx = 0
     r = []
     for i in m_items:
@@ -49,10 +48,28 @@ def findShortestSubArray(nums: List[int]) -> int:
                 minn = min(minn, idx)
                 maxx = max(maxx, idx)
         r.append((maxx - minn) + 1)
-        minn = 1
+        minn = float("inf")
         maxx = 0
     return min(r)
+    # ele_counts = {}
+    # for num in nums:
+    #     if num not in ele_counts:
+    #         ele_counts[num] = 1
+    #     else:
+    #         ele_counts[num] += 1
+    # degree = ele_counts[max(ele_counts, key=ele_counts.get)]
+    # dict_subset = {k: v for k, v in ele_counts.items() if v == degree}
+    # indexes = defaultdict(list)
+    # for i in range(len(nums)):
+    #     if nums[i] in dict_subset:
+    #         indexes[nums[i]].append(i)
+    # smallest_length = float("inf")
+    # for i in indexes:
+    #     if indexes[i][-1] - indexes[i][0] + 1 < smallest_length:
+    #         smallest_length = indexes[i][-1] - indexes[i][0] + 1
+    # return smallest_length
 
 
 assert findShortestSubArray([1, 2, 2, 3, 1]) == 2
 assert findShortestSubArray([1, 2, 2, 3, 1, 4, 2]) == 6
+assert findShortestSubArray([1, 1, 2, 2, 2, 1]) == 3
