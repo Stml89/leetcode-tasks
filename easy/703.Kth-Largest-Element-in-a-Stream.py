@@ -47,19 +47,35 @@ Constraints:
 -104 <= val <= 104
 At most 104 calls will be made to add.
 """
+import heapq
 from typing import List
 
 
 class KthLargest:
 
+    # def __init__(self, k: int, nums: List[int]):
+    #     self.k = k
+    #     self.nums = nums
+    #
+    # def add(self, val: int) -> int:
+    #     self.nums.append(val)
+    #     self.nums.sort()
+    #     return self.nums[-self.k]
+
+    # Alternative and faster solution
     def __init__(self, k: int, nums: List[int]):
         self.k = k
         self.nums = nums
+        heapq.heapify(self.nums)
+
+        while len(self.nums) > k:
+            heapq.heappop(self.nums)
 
     def add(self, val: int) -> int:
-        self.nums.append(val)
-        self.nums.sort()
-        return self.nums[-self.k]
+        heapq.heappush(self.nums, val)
+        if len(self.nums) > self.k:
+            heapq.heappop(self.nums)
+        return self.nums[0]
 
 
 # [2, 4, 5, 8], k=3
