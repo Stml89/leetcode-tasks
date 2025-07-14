@@ -26,7 +26,7 @@ from typing import List
 
 def search(nums: List[int], target: int) -> int:
     start = 0
-    end = len(nums)
+    end = len(nums) - 1
 
     while start <= end:
         mid = (start + end) // 2
@@ -42,3 +42,4 @@ def search(nums: List[int], target: int) -> int:
 
 assert search([-1, 0, 3, 5, 9, 12], 9) == 4
 assert search([-1, 0, 3, 5, 9, 12], 2) == -1
+assert search([-1, 0, 3, 5, 9, 12], 13) == -1
