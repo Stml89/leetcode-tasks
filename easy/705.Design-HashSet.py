@@ -36,24 +36,20 @@ Constraints:
 0 <= key <= 106
 At most 104 calls will be made to add, remove, and contains.
 """
-# TODO
 class MyHashSet:
 
     def __init__(self):
-        self.item = []
+        self.items = set()
 
     def add(self, key: int) -> None:
-        if key not in self.item:
-            self.item.append(key)
+        self.items.add(key)
 
     def remove(self, key: int) -> None:
-        if key in self.item:
-            self.item.remove(key)
+        if key in self.items:
+            self.items.remove(key)
 
     def contains(self, key: int) -> bool:
-        if key in self.item:
-            return True
-        return False
+        return key in self.items
 
 
 obj = MyHashSet()
