@@ -37,7 +37,6 @@ Constraints:
 0 <= key, value <= 106
 At most 104 calls will be made to put, get, and remove.
 """
-# TODO
 class MyHashMap:
     def __init__(self):
         self.data = [-1] * 1000001
