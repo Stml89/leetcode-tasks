@@ -40,22 +40,16 @@ At most 104 calls will be made to put, get, and remove.
 # TODO
 class MyHashMap:
     def __init__(self):
-        self.size = 1000
-        self.item = [-1] * 1000
+        self.data = [-1] * 1000001
 
     def put(self, key: int, value: int) -> None:
-        if 0 <= key < self.size:
-            self.item[key] = value
+        self.data[key] = value
 
     def get(self, key: int) -> int:
-        if 0 <= key < self.size:
-            return self.item[key]
-        else:
-            return -1
+        return self.data[key]
 
     def remove(self, key: int) -> None:
-        if 0 <= key < self.size:
-            self.item[key] = -1
+        self.data[key] = -1
 
 
 myHashMap = MyHashMap()
