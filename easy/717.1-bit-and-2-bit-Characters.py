@@ -44,6 +44,7 @@ def isOneBitCharacter(bits: List[int]) -> bool:
             flag = True
 
         count += 1
+    return flag
 
 
 assert isOneBitCharacter([1, 0, 0])
