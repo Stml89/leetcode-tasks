@@ -49,5 +49,6 @@ def isOneBitCharacter(bits: List[int]) -> bool:
 assert isOneBitCharacter([1, 0, 0])
 assert not isOneBitCharacter([1, 1, 1, 0])
 assert not isOneBitCharacter([1, 0])
+assert isOneBitCharacter([0, 0])
 assert isOneBitCharacter([0])
 assert isOneBitCharacter([1, 1, 0, 0])
