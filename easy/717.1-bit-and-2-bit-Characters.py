@@ -31,20 +31,24 @@ from typing import List
 
 
 def isOneBitCharacter(bits: List[int]) -> bool:
-    count = 0
-    flag = False
-    while count <= len(bits) - 1:
-        if flag and bits[count] in [1, 0]:
-            flag = False
-        elif count == len(bits) - 1 and flag:
-            return False
-        elif count == len(bits) - 1 and not flag:
-            return True
-        elif bits[count] == 1:
-            flag = True
-
-        count += 1
-    return flag
+    i = 0
+    while i < len(bits) - 1:
+        i += 2 if bits[i] else 1
+    return i == len(bits) - 1
+    # count = 0
+    # flag = False
+    # while count <= len(bits) - 1:
+    #     if flag and bits[count] in [1, 0]:
+    #         flag = False
+    #     elif count == len(bits) - 1 and flag:
+    #         return False
+    #     elif count == len(bits) - 1 and not flag:
+    #         return True
+    #     elif bits[count] == 1:
+    #         flag = True
+    #
+    #     count += 1
+    # return flag
 
 
 assert isOneBitCharacter([1, 0, 0])
