@@ -44,6 +44,22 @@ def nextGreatestLetter(letters: List[str], target: str) -> str:
     return letters[0]
 
 
+def nextGreatestLetter1(letters: List[str], target: str) -> str:
+    left, right = 0, len(letters) - 1
+    idx = 0
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if letters[mid] > target:
+            idx = mid
+            right = mid - 1
+        else:
+            left = mid + 1
+
+    return letters[idx]
+
+
 assert nextGreatestLetter(letters=["c", "f", "j"], target="a") == "c"
 assert nextGreatestLetter(letters=["c", "f", "j"], target="c") == "f"
 assert nextGreatestLetter(letters=["x", "x", "y", "y"], target="z") == "x"
