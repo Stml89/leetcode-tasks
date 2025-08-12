@@ -66,6 +66,13 @@ def minCostClimbingStairs1(cost: List[int]) -> int:
     return min(cost[0], cost[1])
 
 
+def minCostClimbingStairs2(cost: List[int]) -> int:
+    i, j = cost[0], cost[1]
+    for k in range(2, len(cost)):
+        i, j = j, min(i, j) + cost[k]
+    return min(i, j)
+
+
 assert minCostClimbingStairs([10]) == 10
 assert minCostClimbingStairs([10, 15, 20]) == 15
 assert minCostClimbingStairs([1, 100, 1, 1, 1, 100, 1, 1, 100, 1]) == 6
