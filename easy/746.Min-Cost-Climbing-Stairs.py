@@ -43,7 +43,6 @@ from typing import List
 
 
 def minCostClimbingStairs(cost: List[int]) -> int:
-    summ = 0
     prev1 = cost[0]
     if len(cost) >= 2:
         prev2 = cost[1]
