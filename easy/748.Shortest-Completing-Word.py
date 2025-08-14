@@ -60,3 +60,6 @@ def shortestCompletingWord(licensePlate: str, words: List[str]) -> str:
 
 assert shortestCompletingWord(licensePlate="1s3 PSt", words=["step", "steps", "stripe", "stepple"]) == "steps"
 assert shortestCompletingWord(licensePlate="1s3 456", words=["looks", "pest", "stew", "show"]) == "pest"
+assert shortestCompletingWord(licensePlate="GrC8950",
+                              words=["measure", "other", "every", "base", "according", "level", "meeting", "none",
+                                     "marriage", "rest"]) == "according"
