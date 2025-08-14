@@ -50,7 +50,7 @@ def shortestCompletingWord(licensePlate: str, words: List[str]) -> str:
     result = []
     for word in words:
         for letter in lp:
-            if letter not in word or lp[letter] != word.count(letter):
+            if letter not in word or lp[letter] > word.count(letter):
                 break
         else:
             result.append(word)
