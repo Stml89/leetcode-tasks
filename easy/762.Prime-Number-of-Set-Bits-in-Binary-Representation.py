@@ -53,11 +53,19 @@ def is_prime(n: int) -> bool:
     return flag
 
 
-def countPrimeSetBits(left: int, right: int) -> int:
+def countPrimeSetBits1(left: int, right: int) -> int:
     l = [i.bit_count() for i in range(left, right + 1)]
     l2 = [i for i in l if is_prime(i)]
 
     return len(l2)
+
+
+def countPrimeSetBits(left: int, right: int) -> int:
+    count = 0
+    for num in range(left, right + 1):
+        if num.bit_count() in {2, 3, 5, 7, 11, 13, 17, 19}:
+            count += 1
+    return count
 
 
 assert countPrimeSetBits(left=6, right=10) == 4
