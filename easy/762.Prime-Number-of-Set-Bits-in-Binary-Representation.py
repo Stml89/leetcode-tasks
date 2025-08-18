@@ -36,6 +36,8 @@ Constraints:
 1 <= left <= right <= 106
 0 <= right - left <= 104
 """
+
+
 # TODO example
 def is_prime(n: int) -> bool:
     if n <= 1:
@@ -52,7 +54,7 @@ def is_prime(n: int) -> bool:
 
 
 def countPrimeSetBits(left: int, right: int) -> int:
-    l = [str(bin(i))[2:].count("1") for i in range(left, right + 1)]
+    l = [i.bit_count() for i in range(left, right + 1)]
     l2 = [i for i in l if is_prime(i)]
 
     return len(l2)
