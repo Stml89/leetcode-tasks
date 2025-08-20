@@ -33,5 +33,12 @@ def numJewelsInStones(jewels: str, stones: str) -> int:
     return cnt
 
 
+def numJewelsInStones1(jewels: str, stones: str) -> int:
+    cnt = 0
+    for item in jewels:
+        if item in stones:
+            cnt += stones.count(item)
+
+
 assert numJewelsInStones(jewels="aA", stones="aAAbbbb") == 3
 assert numJewelsInStones(jewels="z", stones="ZZ") == 0
