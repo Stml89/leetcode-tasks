@@ -42,7 +42,6 @@ class TreeNode:
 
 class Solution:
     def minDiffInBST(self, root: Optional[TreeNode]) -> int:
-
         values = []
 
         def inner(node):
@@ -54,9 +53,11 @@ class Solution:
             inner(node.right)
 
         inner(root)
-        last1 = heappop(values)
-        last2 = heappop(values)
-        return last2 - last1
+        ans = float('inf')
+        for i in range(len(values)):
+            for y in range(i + 1, len(values)):
+                ans = min(ans, abs(values[i] - values[y]))
+        return ans
 
     def minDiffInBST1(self, root: Optional[TreeNode]) -> int:
         values = []
@@ -70,8 +71,11 @@ class Solution:
             inner(node.right)
 
         inner(root)
-        values.sort()
-        return values[1] - values[0]
+        ans = float('inf')
+        for i in range(len(values)):
+            for y in range(i + 1, len(values)):
+                ans = min(ans, abs(values[i] - values[y]))
+        return ans
 
 
 root = TreeNode(4)
@@ -94,6 +98,6 @@ root3.right.right.left.left = TreeNode(44)
 
 s = Solution()
 
-assert s.minDiffInBST(root) == 1
-assert s.minDiffInBST(root2) == 1
-assert s.minDiffInBST(root3) == 6
+assert s.minDiffInBST1(root) == 1
+assert s.minDiffInBST1(root2) == 1
+assert s.minDiffInBST1(root3) == 6
