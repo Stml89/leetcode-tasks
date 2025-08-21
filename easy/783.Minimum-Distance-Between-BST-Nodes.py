@@ -58,6 +58,21 @@ class Solution:
         last2 = heappop(values)
         return last2 - last1
 
+    def minDiffInBST1(self, root: Optional[TreeNode]) -> int:
+        values = []
+
+        def inner(node):
+            if not node:
+                return
+
+            values.append(node.val)
+            inner(node.left)
+            inner(node.right)
+
+        inner(root)
+        values.sort()
+        return values[1] - values[0]
+
 
 root = TreeNode(4)
 root.left = TreeNode(2)
