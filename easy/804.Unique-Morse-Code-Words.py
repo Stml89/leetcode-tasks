@@ -40,6 +40,20 @@ from string import ascii_lowercase
 from typing import List
 
 
+def uniqueMorseRepresentations1(words: List[str]) -> int:
+    morse = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.",
+             "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]
+
+    morsed = set()
+    for word in words:
+        code = ''
+        for char in word:
+            code += morse[ord(char) - ord('a')]
+        morsed.add(code)
+
+    return len(morsed)
+
+
 def uniqueMorseRepresentations(words: List[str]) -> int:
     morse_alphabet = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.",
                       "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]
