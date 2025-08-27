@@ -19,7 +19,6 @@ s and goal consist of lowercase English letters.
 """
 
 
-# TODO
 # TODO example
 def rotateString(s: str, goal: str) -> bool:
     for i in range(len(s)):
