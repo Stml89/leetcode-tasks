@@ -26,5 +26,10 @@ def findComplement1(num: int) -> int:
     return num ^ (2 ** (len(bin(num)[2:])) - 1)
 
 
-assert findComplement1(5) == 2
-assert findComplement1(1) == 0
+def findComplement2(num: int) -> int:
+    b = f"{num:b}".replace("0", "2").replace("1", "0").replace("2", "1")
+    return int(b, 2)
+
+
+assert findComplement2(5) == 2
+assert findComplement2(1) == 0
