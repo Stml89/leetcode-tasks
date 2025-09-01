@@ -29,25 +29,17 @@ banned[i] consists of only lowercase English letters.
 """
 # TODO example
 
-from typing import List
 from collections import Counter
+from typing import List
+import re
 
 
 def mostCommonWord(paragraph: str, banned: List[str]) -> str:
-    words_list = paragraph.lower() \
-        .replace(',', '') \
-        .replace('.', '') \
-        .replace('!', '') \
-        .replace('?', '') \
-        .replace('\'', '') \
-        .replace(';', '') \
-        .split(' ')
+    m_common = Counter(re.findall('[a-z]+', paragraph.lower()))
 
-    m_common = Counter(words_list).most_common()
-
-    for element in m_common:
-        if element[0] not in banned:
-            return element[0]
+    for element, _ in m_common.most_common():
+        if element not in banned:
+            return element
 
 
 assert mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", ["hit"]) == "ball"
