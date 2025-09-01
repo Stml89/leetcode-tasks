@@ -52,3 +52,4 @@ def mostCommonWord(paragraph: str, banned: List[str]) -> str:
 
 assert mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", ["hit"]) == "ball"
 assert mostCommonWord("a.", []) == "a"
+assert mostCommonWord("a, a, a, a, b,b,b,c, c", ["a"]) == "b"
