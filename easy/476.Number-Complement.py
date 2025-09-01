@@ -22,5 +22,9 @@ def findComplement(num: int) -> int:
     return num ^ all_ones
 
 
-assert findComplement(5) == 2
-assert findComplement(1) == 0
+def findComplement1(num: int) -> int:
+    return num ^ (2 ** (len(bin(num)[2:])) - 1)
+
+
+assert findComplement1(5) == 2
+assert findComplement1(1) == 0
