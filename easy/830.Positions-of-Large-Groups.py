@@ -48,6 +48,19 @@ def largeGroupPositions(s: str) -> List[List[int]]:
     return res
 
 
+def largeGroupPositions1(s: str) -> List[List[int]]:
+    res = []
+    start = 0
+    while start < len(s):
+        end = start
+        while end < len(s) and s[end] == s[start]:
+            end += 1
+        if end - start >= 3:
+            res.append([start, end - 1])
+        start = end
+    return res
+
+
 assert largeGroupPositions("abbxxxxzzy") == [[3, 6]]
 assert largeGroupPositions("abc") == []
 assert largeGroupPositions("abcdddeeeeaabbbcd") == [[3, 5], [6, 9], [12, 14]]
