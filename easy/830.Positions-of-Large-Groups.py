@@ -32,20 +32,20 @@ from typing import List
 
 
 def largeGroupPositions(s: str) -> List[List[int]]:
-    l = []
+    res = []
     cnt = 1
     for i in range(1, len(s)):
         if s[i] != s[i - 1]:
             if cnt >= 3:
-                l.append(s[i - 1] * cnt)
+                res.append([i - cnt, i - 1])
             cnt = 1
         else:
             cnt += 1
     else:
         if cnt >= 3:
-            l.append(s[i - 1] * cnt)
+            res.append([i - cnt + 1, i])
 
-    return [[s.index(group), s.index(group) + (len(group) - 1)] for group in l]
+    return res
 
 
 assert largeGroupPositions("abbxxxxzzy") == [[3, 6]]
