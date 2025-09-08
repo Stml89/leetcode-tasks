@@ -41,6 +41,15 @@ def flipAndInvertImage(image: List[List[int]]) -> List[List[int]]:
     return image
 
 
+def flipAndInvertImage1(image: List[List[int]]) -> List[List[int]]:
+    a = []
+    for subbit in image:
+        flip = subbit[::-1]
+        inverted = [1 - bit for bit in flip]
+        a.append(inverted)
+    return a
+
+
 assert flipAndInvertImage([[1, 1, 0], [1, 0, 1], [0, 0, 0]]) == [[1, 0, 0], [0, 1, 0], [1, 1, 1]]
 assert flipAndInvertImage([[1, 1, 0, 0], [1, 0, 0, 1], [0, 1, 1, 1], [1, 0, 1, 0]]) == [[1, 1, 0, 0], [0, 1, 1, 0],
                                                                                         [0, 0, 0, 1], [1, 0, 1, 0]]
