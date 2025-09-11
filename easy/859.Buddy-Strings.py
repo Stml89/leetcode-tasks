@@ -28,18 +28,14 @@ s and goal consist of lowercase letters.
 
 # TODO example
 def buddyStrings(s: str, goal: str) -> bool:
-    curr = 0
-    point = 1
-    while curr != len(s) - 1:
-        tmp = list(s).copy()
-        tmp[curr], tmp[point] = tmp[point], tmp[curr]
-        if ''.join(tmp) == goal:
-            return True
+    if len(s) != len(goal):
+        return False
+    if s == goal and len(set(s)) < len(goal):
+        return True
 
-        curr += 1
-        point += 1
+    diff = [(a, b) for a, b in zip(s, goal) if a != b]
 
-    return False
+    return len(diff) == 2 and diff[0] == diff[1][::-1]
 
 
 assert buddyStrings(s="ab", goal="ba")
