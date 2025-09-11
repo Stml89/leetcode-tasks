@@ -30,10 +30,10 @@ s and goal consist of lowercase letters.
 def buddyStrings(s: str, goal: str) -> bool:
     curr = 0
     point = 1
-    s = list(s)
     while curr != len(s) - 1:
-        s[curr], s[point] = s[point], s[curr]
-        if ''.join(s) == goal:
+        tmp = list(s).copy()
+        tmp[curr], tmp[point] = tmp[point], tmp[curr]
+        if ''.join(tmp) == goal:
             return True
 
         curr += 1
