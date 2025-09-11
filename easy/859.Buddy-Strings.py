@@ -45,3 +45,4 @@ def buddyStrings(s: str, goal: str) -> bool:
 assert buddyStrings(s="ab", goal="ba")
 assert not buddyStrings(s="ab", goal="ab")
 assert buddyStrings(s="aa", goal="aa")
+assert buddyStrings(s="aaaaaaabc", goal="aaaaaaacb")
