@@ -62,3 +62,4 @@ def lemonadeChange(bills: List[int]) -> bool:
 
 assert lemonadeChange([5, 5, 5, 10, 20])
 assert not lemonadeChange([5, 5, 10, 10, 20])
+assert not lemonadeChange([5, 5, 5, 10, 5, 5, 10, 20, 20, 20])
