@@ -37,29 +37,36 @@ from typing import List
 
 
 def lemonadeChange(bills: List[int]) -> bool:
-    cash = []
-    cash.sort(reverse=True)
-    lemprice = 5
+    cash = {5: 0, 10: 0, 20: 0}
+
     for i in bills:
-        if i == lemprice:
-            cash.append(i)
-        else:
-            subs = i - lemprice
-            if sum(cash) < subs:
+        if i == 5:
+            cash[5] += 1
+        elif i == 10 and cash[5] > 0:
+            cash[10] += 1
+            cash[5] -= 1
+        elif i == 20:
+            if cash[10] > 0:
+                cash[10] -= 1
+                cash[5] -= 1
+            elif cash[5] >= 3:
+                cash[5] -= 3
+            else:
                 return False
+            cash[20] += 1
+        else:
+            return False
 
-            for y in range(len(cash) - 1, -1, -1):
-                if (subs - cash[y]) == 0:
-                    cash.remove(cash[y])
-                    break
-                else:
-                    subs -= cash[y]
-                    cash.remove(cash[y])
+    for i in cash:
+        if cash[i] < 0:
+            return False
 
-            cash.append(i)
     return True
 
 
 assert lemonadeChange([5, 5, 5, 10, 20])
 assert not lemonadeChange([5, 5, 10, 10, 20])
 assert not lemonadeChange([5, 5, 5, 10, 5, 5, 10, 20, 20, 20])
+assert not lemonadeChange([5, 5, 5, 5, 20, 20, 5, 5, 5, 5])
+assert not lemonadeChange([5, 5, 5, 10, 10, 20, 10, 20, 5, 5])
+assert lemonadeChange([5, 5, 10, 20, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10, 5, 5, 20, 5, 20, 5])
