@@ -40,7 +40,7 @@ def binaryGap(n: int) -> int:
         return 0
 
     for m in re.finditer('1', b):
-        distance.append(m.end() - distance[-1])
+        distance.append(m.start() - distance[-1])
 
     return max(distance)
 
