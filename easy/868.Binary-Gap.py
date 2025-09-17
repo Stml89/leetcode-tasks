@@ -48,3 +48,4 @@ def binaryGap(n: int) -> int:
 assert binaryGap(22) == 2
 assert binaryGap(8) == 0
 assert binaryGap(5) == 2
+assert binaryGap(7) == 1
