@@ -30,22 +30,22 @@ Explanation: 5 in binary is "101".
 Constraints:
 1 <= n <= 109
 """
-import re
 
 
 def binaryGap(n: int) -> int:
-    distance = [0]
-    b = bin(n)[2:]
-    if b.count("1") < 2:
-        return 0
+    prev, i, max_ = float("inf"), 0, 0
+    while n > 0:
+        if n & 1:
+            max_ = max(max_, i - prev)
+            prev = i
+        n >>= 1
+        i += 1
 
-    for m in re.finditer('1', b):
-        distance.append(m.start() - distance[-1])
-
-    return max(distance)
+    return max_
 
 
 assert binaryGap(22) == 2
 assert binaryGap(8) == 0
 assert binaryGap(5) == 2
 assert binaryGap(7) == 1
+assert binaryGap(15) == 1
