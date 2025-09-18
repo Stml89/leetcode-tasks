@@ -98,3 +98,11 @@ root4.left = TreeNode(val=3)
 root4.right = TreeNode(val=2)
 
 assert not s.leafSimilar(root3, root4)
+
+root5 = TreeNode(val=1)
+root5.left = TreeNode(val=2)
+
+root6 = TreeNode(val=2)
+root6.left = TreeNode(val=2)
+
+assert s.leafSimilar(root5, root6)
