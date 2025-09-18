@@ -53,6 +53,9 @@ class Solution:
         leaf_r2 = []
 
         def inner(node, leafs):
+            if not node:
+                return
+
             if not node.left and not node.right:
                 leafs.append(node.val)
                 return
