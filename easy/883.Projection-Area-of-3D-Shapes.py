@@ -38,6 +38,14 @@ def projectionArea(grid: List[List[int]]) -> int:
     return x + z + y
 
 
+def projectionArea1(grid: List[List[int]]) -> int:
+    hor = sum(map(max, grid))
+    ver = sum(map(max, zip(*grid)))
+    top = sum(v > 0 for row in grid for v in row)
+
+    return ver + hor + top
+
+
 assert projectionArea([[1, 2], [3, 4]]) == 17
 assert projectionArea([[2]]) == 5
 assert projectionArea([[1, 0], [0, 2]]) == 8
