@@ -33,10 +33,10 @@ def uncommonFromSentences(s1: str, s2: str) -> List[str]:
     s2diff = ls2.difference(ls1)
 
     for i in s1diff:
-        if s1.count(i) < 2:
+        if list(s1.split()).count(i) < 2:
             l.append(i)
     for i in s2diff:
-        if s2.count(i) < 2:
+        if list(s2.split()).count(i) < 2:
             l.append(i)
 
     return l
