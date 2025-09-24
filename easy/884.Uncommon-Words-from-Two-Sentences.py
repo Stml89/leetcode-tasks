@@ -44,3 +44,7 @@ def uncommonFromSentences(s1: str, s2: str) -> List[str]:
 
 assert uncommonFromSentences(s1="this apple is sweet", s2="this apple is sour") == ["sweet", "sour"]
 assert uncommonFromSentences(s1="apple apple", s2="banana") == ["banana"]
+assert uncommonFromSentences(s1="op vu kux dn jsenj hbdez hbdez nbenh z op dxmqd op",
+                             s2="kux wnx wnx wbi jsenj nlgfn vu f vu fvxas dn op tb") == ["nbenh", "dxmqd", "z",
+                                                                                          "nlgfn", "fvxas", "f", "tb",
+                                                                                          "wbi"]
