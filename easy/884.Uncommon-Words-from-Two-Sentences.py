@@ -22,10 +22,11 @@ s1 and s2 do not have leading or trailing spaces.
 All the words in s1 and s2 are separated by a single space.
 """
 # TODO example
+from collections import Counter
 from typing import List
 
 
-def uncommonFromSentences(s1: str, s2: str) -> List[str]:
+def uncommonFromSentences1(s1: str, s2: str) -> List[str]:
     l = []
     ls1 = set(s1.split())
     ls2 = set(s2.split())
@@ -40,6 +41,13 @@ def uncommonFromSentences(s1: str, s2: str) -> List[str]:
             l.append(i)
 
     return l
+
+
+def uncommonFromSentences(s1: str, s2: str) -> List[str]:
+    res = (s1 + " " + s2).split()
+    cnt = Counter(res)
+
+    return [c for c, v in cnt.items() if v == 1]
 
 
 assert uncommonFromSentences(s1="this apple is sweet", s2="this apple is sour") == ["sweet", "sour"]
