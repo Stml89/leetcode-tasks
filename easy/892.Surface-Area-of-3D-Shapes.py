@@ -36,6 +36,23 @@ from typing import List
 
 
 def surfaceArea(grid: List[List[int]]) -> int:
+    n = len(grid)
+
+    area = 0
+    for i in range(n):
+        for j in range(n):
+            if i == 0: area += grid[i][j]  # upper outside
+            if j == 0: area += grid[i][j]  # left outside
+            if i == n - 1: area += grid[i][j]  # lower outside
+            if j == n - 1: area += grid[i][j]  # right outside
+            if i + 1 < n: area += abs(grid[i][j] - grid[i + 1][j])  # lower neighbor delta
+            if j + 1 < n: area += abs(grid[i][j] - grid[i][j + 1])  # right neighbor delta
+            if grid[i][j]: area += 2  # top/bottom surface
+
+    return area
+
+
+def surfaceArea1(grid: List[List[int]]) -> int:
     ans = 0
 
     for i in range(len(grid)):
