@@ -49,6 +49,26 @@ def isMonotonic1(nums: List[int]) -> bool:
     return is_inc or is_dec
 
 
+def isMonotonic2(nums: List[int]) -> bool:
+    def inc(nums: List[int]) -> bool:
+        prev = float('-inf')
+        for num in nums:
+            if num < prev:
+                return False
+            prev = num
+        return True
+
+    def dec(nums: List[int]) -> bool:
+        prev = float('inf')
+        for num in nums:
+            if num > prev:
+                return False
+            prev = num
+        return True
+
+    return inc(nums) or dec(nums)
+
+
 assert isMonotonic([1, 2, 2, 3])
 assert isMonotonic([6, 5, 4, 4])
 assert not isMonotonic([1, 3, 2])
