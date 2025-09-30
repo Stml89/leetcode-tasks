@@ -23,6 +23,7 @@ Constraints:
 1 <= nums.length <= 105
 -105 <= nums[i] <= 105
 """
+from itertools import pairwise
 from typing import List
 
 
@@ -39,6 +40,13 @@ def isMonotonic(nums: List[int]) -> bool:
             flag = -1
 
     return True
+
+
+def isMonotonic1(nums: List[int]) -> bool:
+    is_inc = all(a <= b for a, b in pairwise(nums))
+    is_dec = all(a >= b for a, b in pairwise(nums))
+
+    return is_inc or is_dec
 
 
 assert isMonotonic([1, 2, 2, 3])
