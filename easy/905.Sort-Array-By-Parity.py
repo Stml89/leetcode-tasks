@@ -20,7 +20,7 @@ Constraints:
 from typing import List
 
 
-def sortArrayByParity(nums: List[int]) -> List[int]:
+def sortArrayByParity1(nums: List[int]) -> List[int]:
     odd_num = []
     even_num = []
     for i in nums:
@@ -30,6 +30,12 @@ def sortArrayByParity(nums: List[int]) -> List[int]:
             odd_num.append(i)
 
     return even_num + odd_num
+
+
+def sortArrayByParity(nums: List[int]) -> List[int]:
+    ans = list(filter(lambda x: x % 2 == 0, nums))
+    ans.extend(list(filter(lambda x: x % 2 != 0, nums)))
+    return ans
 
 
 assert sortArrayByParity([3, 1, 2, 4]) == [2, 4, 3, 1]
