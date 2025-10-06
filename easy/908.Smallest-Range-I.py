@@ -47,6 +47,10 @@ def smallestRangeI(nums: List[int], k: int) -> int:
     return max_value - min_value
 
 
+def smallestRangeI1(nums, k: int) -> int:
+    return max(0, (max(nums) - min(nums)) - 2 * k)
+
+
 assert smallestRangeI(nums=[1], k=0) == 0
 assert smallestRangeI(nums=[0, 10], k=2) == 6
 assert smallestRangeI(nums=[1, 3, 6], k=3) == 0
