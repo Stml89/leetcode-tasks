@@ -41,5 +41,19 @@ def sortArrayByParityII(nums: List[int]) -> List[int]:
     return res
 
 
+def sortArrayByParityII1(nums: List[int]) -> List[int]:
+    l = 0
+    r = 1
+    nlist = [0] * len(nums)
+    for i in range(0, len(nums)):
+        if nums[i] % 2 == 0:
+            nlist[l] = nums[i]
+            l += 2
+        else:
+            nlist[r] = nums[i]
+            r += 2
+    return nlist
+
+
 assert sortArrayByParityII([4, 2, 5, 7]) == [4, 5, 2, 7]
 assert sortArrayByParityII([2, 3]) == [2, 3]
