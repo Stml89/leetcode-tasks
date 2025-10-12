@@ -44,5 +44,18 @@ def isHappy(n: int) -> bool:
             return True
 
 
+# Time complexity: O(log n)
+# Space complexity: O(log n)
+def isHappy1(n: int) -> bool:
+    seen = set()
+    while n != 1 and n not in seen:
+        seen.add(n)
+        new_n = 0
+        for digit in str(n):
+            new_n += int(digit) ** 2
+        n = new_n
+    return n == 1
+
+
 assert isHappy(19)
 assert not isHappy(2)
