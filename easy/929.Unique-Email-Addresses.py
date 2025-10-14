@@ -67,6 +67,24 @@ def numUniqueEmails(emails: List[str]) -> int:
     return len(set(emails_to_send))
 
 
+# Time complexity: O(n * m)
+# Space complexity: O(n * m)
+def numUniqueEmails1(emails: List[str]) -> int:
+    result = set()
+    for e in emails:
+        un, dn = e.split('@')
+        l = []
+        for i in un:
+            if i == '.':
+                continue
+            elif i == '+':
+                break
+            l.append(i)
+        un = "".join(l)
+        result.add(un + '@' + dn)
+    return len(result)
+
+
 assert numUniqueEmails(
     ["test.email+alex@leetcode.com", "test.e.mail+bob.cathy@leetcode.com", "testemail+david@lee.tcode.com"]) == 2
 assert numUniqueEmails(["a@leetcode.com", "b@leetcode.com", "c@leetcode.com"]) == 3
