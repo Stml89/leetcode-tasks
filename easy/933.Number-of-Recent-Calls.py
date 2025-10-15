@@ -35,7 +35,9 @@ class RecentCounter:
     def __init__(self):
         self.intervals = []
 
-    def ping(self, t: int) -> int:
+    # Time complexity: O(n^2)
+    # Space complexity: O(n)
+    def ping1(self, t: int) -> int:
         count = 0
         curr_interval = (t - 3000, t)
         self.intervals.append(curr_interval)
