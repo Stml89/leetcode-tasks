@@ -47,6 +47,16 @@ class RecentCounter:
 
         return count
 
+    # Time complexity: O(n)
+    # Space complexity: O(n)
+    def ping(self, t: int) -> int:
+        self.intervals.append(t)
+        prev = t - 3000
+        while self.intervals[0] < prev:
+            self.intervals = self.intervals[1:]
+
+        return len(self.intervals)
+
 
 # Your RecentCounter object will be instantiated and called as such:
 obj = RecentCounter()
