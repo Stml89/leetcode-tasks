@@ -64,6 +64,27 @@ class Solution:
 
         return inner(root)
 
+    # Time complexity: O(n)
+    # Space complexity: O(h)
+    def rangeSumBST1(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        stack = [root]
+        result = 0
+        while stack:
+            node = stack.pop()
+            if not node:
+                continue
+
+            if low <= node.val <= high:
+                result += node.val
+                stack.append(node.right)
+                stack.append(node.left)
+            elif node.val < low:
+                stack.append(node.right)
+            else:
+                stack.append(node.left)
+
+        return result
+
 
 s = Solution()
 root1 = TreeNode(val=10)
