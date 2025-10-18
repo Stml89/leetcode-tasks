@@ -45,6 +45,16 @@ def majorityElement1(nums: List[int]) -> int:
     return nums[n // 2]
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def majorityElement2(nums: List[int]) -> int:
+    counts = {}
+    for num in nums:
+        counts[num] = counts.get(num, 0) + 1
+        if counts[num] > len(nums) // 2:
+            return num
+
+
 assert majorityElement([6, 5, 5]) == 5
 assert majorityElement([3, 2, 3]) == 3
 assert majorityElement([2, 2, 1, 1, 1, 2, 2]) == 2
