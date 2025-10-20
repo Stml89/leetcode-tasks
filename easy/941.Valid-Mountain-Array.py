@@ -57,6 +57,26 @@ def validMountainArray(arr: List[int]) -> bool:
     return is_decreasing and is_increasing
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def validMountainArray1(arr: List[int]) -> bool:
+    left, right = 1, len(arr) - 2
+
+    if left > right:
+        return False  # length < 3
+    if arr[left] <= arr[left - 1]:
+        return False
+    if arr[right] <= arr[right + 1]:
+        return False
+
+    while left < right and arr[left] < arr[left + 1]:
+        left += 1
+    while left <= right and arr[right] < arr[right - 1]:
+        right -= 1
+
+    return left >= right
+
+
 assert not validMountainArray([2, 1])
 assert not validMountainArray([3, 5, 5])
 assert not validMountainArray([1, 2, 3, 2, 3])
