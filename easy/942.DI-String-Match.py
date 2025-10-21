@@ -49,6 +49,24 @@ def diStringMatch(s: str) -> List[int]:
     return arr
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def diStringMatch1(s: str) -> List[int]:
+    low, high = 0, len(s)
+    perm = []
+
+    for ch in s:
+        if ch == 'I':
+            perm.append(low)
+            low += 1
+        else:
+            perm.append(high)
+            high -= 1
+
+    perm.append(low)
+    return perm
+
+
 assert diStringMatch("IDID") == [0, 4, 1, 3, 2]
 assert diStringMatch("III") == [0, 1, 2, 3]
 assert diStringMatch("DDI") == [3, 2, 0, 1]
