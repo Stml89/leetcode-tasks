@@ -49,7 +49,7 @@ from typing import List
 
 # Time complexity: O(n * m)
 # Space complexity: O(n * m)
-def minDeletionSize(strs: List[str]) -> int:
+def minDeletionSize1(strs: List[str]) -> int:
     reorder = []
     for outer in range(len(strs[0])):
         s = ""
@@ -68,6 +68,12 @@ def minDeletionSize(strs: List[str]) -> int:
             cnt += 1
 
     return len(reorder) - cnt
+
+
+# Time complexity: O(m * n log n)
+# Space complexity: O(n)
+def minDeletionSize(strs: List[str]) -> int:
+    return sum(1 for i in zip(*strs) if list(i) != sorted(i))
 
 
 assert minDeletionSize(["cba", "daf", "ghi"]) == 1
