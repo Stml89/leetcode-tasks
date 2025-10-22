@@ -47,20 +47,20 @@ from string import ascii_lowercase
 from typing import List
 
 
-# Time complexity: O(n)
-# Space complexity: O(n)
+# Time complexity: O(n * m)
+# Space complexity: O(n * m)
 def minDeletionSize(strs: List[str]) -> int:
     reorder = []
     for outer in range(len(strs[0])):
         s = ""
-        for inner in range(len(strs[0])):
+        for inner in range(len(strs)):
             s += strs[inner][outer]
         reorder.append(s)
 
     cnt = 0
-    for outer in range(len(reorder[0])):
+    for outer in range(len(reorder)):
         idx = float("-inf")
-        for inner in range(len(strs[0])):
+        for inner in range(len(reorder[0])):
             if ascii_lowercase.index(reorder[outer][inner]) < idx:
                 break
             idx = ascii_lowercase.index(reorder[outer][inner])
@@ -73,3 +73,4 @@ def minDeletionSize(strs: List[str]) -> int:
 assert minDeletionSize(["cba", "daf", "ghi"]) == 1
 assert minDeletionSize(["a", "b"]) == 0
 assert minDeletionSize(["zyx", "wvu", "tsr"]) == 3
+assert minDeletionSize(["rrjk", "furt", "guzm"]) == 2
