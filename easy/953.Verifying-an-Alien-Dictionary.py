@@ -58,6 +58,13 @@ def isAlienSorted(words: List[str], order: str) -> bool:
     return True
 
 
+# Time complexity: O(m * n * log(n))
+# Space complexity: O(n + k)
+def isAlienSorted1(words: List[str], order: str) -> bool:
+    mapping = {v: i for i, v in enumerate(order)}
+    return words == sorted(words, key=lambda word: [mapping[c] for c in word])
+
+
 assert isAlienSorted(words=["hello", "leetcode"], order="hlabcdefgijkmnopqrstuvwxyz")
 assert not isAlienSorted(words=["word", "world", "row"], order="worldabcefghijkmnpqstuvxyz")
 assert not isAlienSorted(words=["apple", "app"], order="abcdefghijklmnopqrstuvwxyz")
