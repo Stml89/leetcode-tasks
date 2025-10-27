@@ -26,18 +26,30 @@ nums.length == 2 * n
 nums contains n + 1 unique elements and one of them is repeated exactly n times.
 """
 from collections import Counter
+from random import randint
 from typing import List
 
 
 # Time complexity: O(N)
 # Space complexity: O(N)
-def repeatedNTimes(nums: List[int]) -> int:
+def repeatedNTimes1(nums: List[int]) -> int:
     mc = Counter(nums).most_common()
     n = len(nums) / 2
     for v, c in mc:
         if c == n:
             return v
     return 0
+
+
+# Time complexity: O(N)
+# Space complexity: O(N)
+def repeatedNTimes(nums: list[int]) -> int:
+    d = {}
+    for i in nums:
+        if i not in d:
+            d[i] = 1
+        else:
+            return i
 
 
 assert repeatedNTimes([1, 2, 3, 3]) == 3
