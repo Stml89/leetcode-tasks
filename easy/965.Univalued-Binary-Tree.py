@@ -58,6 +58,18 @@ class Solution:
                 return False
         return True
 
+    # Time complexity: O(n)
+    # Space complexity: O(n)
+    def isUnivalTree1(self, root: Optional[TreeNode]) -> bool:
+        def is_unival(node, value):
+            if not node:
+                return True
+            if node.val != value:
+                return False
+            return is_unival(node.left, value) and is_unival(node.right, value)
+
+        return is_unival(root, root.val)
+
 
 s = Solution()
 
