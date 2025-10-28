@@ -26,7 +26,6 @@ nums.length == 2 * n
 nums contains n + 1 unique elements and one of them is repeated exactly n times.
 """
 from collections import Counter
-from random import randint
 from typing import List
 
 
