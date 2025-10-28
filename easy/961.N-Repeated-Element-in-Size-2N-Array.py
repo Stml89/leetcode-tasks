@@ -29,8 +29,8 @@ from collections import Counter
 from typing import List
 
 
-# Time complexity: O(N)
-# Space complexity: O(N)
+# Time complexity: O(n)
+# Space complexity: O(n)
 def repeatedNTimes1(nums: List[int]) -> int:
     mc = Counter(nums).most_common()
     n = len(nums) / 2
@@ -40,8 +40,8 @@ def repeatedNTimes1(nums: List[int]) -> int:
     return 0
 
 
-# Time complexity: O(N)
-# Space complexity: O(N)
+# Time complexity: O(n)
+# Space complexity: O(n)
 def repeatedNTimes(nums: list[int]) -> int:
     d = {}
     for i in nums:
