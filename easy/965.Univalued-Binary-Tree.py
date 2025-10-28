@@ -70,6 +70,15 @@ class Solution:
 
         return is_unival(root, root.val)
 
+    # Time complexity: O(n)
+    # Space complexity: O(n)
+    def isUnivalTree2(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+        if (root.left and root.val != root.left.val) or (root.right and root.right.val != root.val):
+            return False
+        return self.isUnivalTree2(root.left) and self.isUnivalTree2(root.right)
+
 
 s = Solution()
 
