@@ -39,6 +39,22 @@ def largestPerimeter(nums: List[int]) -> int:
     return 0
 
 
+# Time complexity: O(n log n)
+# Space complexity: O(1)
+def largestPerimeter1(nums: List[int]) -> int:
+    heapq._heapify_max(nums)
+    biggest = heapq._heappop_max(nums)
+    second = heapq._heappop_max(nums)
+    while len(nums) > 0:
+        smallest = heapq._heappop_max(nums)
+        if smallest + second > biggest:
+            return smallest + second + biggest
+        biggest = second
+        second = smallest
+
+    return 0
+
+
 assert largestPerimeter([2, 1, 2]) == 5
 assert largestPerimeter([2, 1, 1]) == 0
 assert largestPerimeter([1, 2, 1, 10]) == 0
