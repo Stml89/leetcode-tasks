@@ -32,5 +32,24 @@ def sortedSquares(nums: List[int]) -> List[int]:
     return sorted([item ** 2 for item in nums])
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def sortedSquares1(nums: List[int]) -> List[int]:
+    res = []
+    beginning, end = 0, len(nums) - 1
+
+    while beginning <= end:
+        beginning_num = nums[beginning] ** 2
+        end_num = nums[end] ** 2
+        if beginning_num > end_num:
+            res.append(beginning_num)
+            beginning += 1
+        else:
+            res.append(end_num)
+            end -= 1
+
+    return res[::-1]
+
+
 assert sortedSquares([-4, -1, 0, 3, 10]) == [0, 1, 9, 16, 100]
 assert sortedSquares([-7, -3, 2, 3, 11]) == [4, 9, 9, 49, 121]
