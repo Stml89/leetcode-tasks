@@ -50,6 +50,25 @@ def addToArrayForm(num: List[int], k: int) -> List[int]:
     return num
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def addToArrayForm1(num: List[int], k: int) -> List[int]:
+    result = []
+    index = len(num) - 1
+
+    while index >= 0 or k > 0:
+        if index >= 0:
+            k += num[index]
+
+        carry, digit = divmod(k, 10)
+        result.append(digit)
+
+        k = carry
+        index -= 1
+
+    return result[::-1]
+
+
 assert addToArrayForm(num=[1, 2, 0, 0], k=34) == [1, 2, 3, 4]
 assert addToArrayForm(num=[2, 7, 4], k=181) == [4, 5, 5]
 assert addToArrayForm(num=[2, 1, 5], k=806) == [1, 0, 2, 1]
