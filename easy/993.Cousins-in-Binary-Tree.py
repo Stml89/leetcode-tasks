@@ -75,6 +75,23 @@ class Solution:
                     return True
         return False
 
+    # Time complexity: O(n)
+    # Space complexity: O(n)
+    def isCousins1(self, root: Optional[TreeNode], x: int, y: int) -> bool:
+        parent = {}
+        depth = {}
+
+        def dfs(node, par, d):
+            if not node:
+                return
+            parent[node.val] = par
+            depth[node.val] = d
+            dfs(node.left, node, d + 1)
+            dfs(node.right, node, d + 1)
+
+        dfs(root, None, 0)
+        return parent[x] != parent[y] and depth[x] == depth[y]
+
 
 s = Solution()
 
