@@ -49,6 +49,22 @@ def findJudge(n: int, trust: List[List[int]]) -> int:
     return -1
 
 
+# Time complexity: O(m + n)
+# Space complexity: O(n)
+def findJudge1(n: int, trust: List[List[int]]) -> int:
+    principal = set()
+    people_dict = {i: 0 for i in range(1, n + 1)}
+
+    for a, b in trust:
+        principal.add(a)
+        people_dict[b] += 1
+
+    for i in range(1, n + 1):
+        if i not in principal and people_dict[i] == n - 1:
+            return i
+    return -1
+
+
 assert findJudge(n=2, trust=[[1, 2]]) == 2
 assert findJudge(n=3, trust=[[1, 3], [2, 3]]) == 3
 assert findJudge(n=3, trust=[[1, 3], [2, 3], [3, 1]]) == -1
