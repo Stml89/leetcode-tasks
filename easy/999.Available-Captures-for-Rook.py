@@ -64,7 +64,7 @@ from typing import List
 
 # Time complexity: O(n^2)
 # Space complexity: O(1)
-def numRookCaptures(board: List[List[str]]) -> int:
+def numRookCaptures1(board: List[List[str]]) -> int:
     attack = 0
     pawn = 'p'
     bishop = 'B'
@@ -109,6 +109,34 @@ def numRookCaptures(board: List[List[str]]) -> int:
             attack += 1
             break
 
+    return attack
+
+
+# Time complexity: O(n^2)
+# Space complexity: O(1)
+def numRookCaptures(board: List[List[str]]) -> int:
+    attack = 0
+    rook_row, rook_col = -1, -1
+    for r in range(len(board)):
+        for c in range(len(board[0])):
+            if board[r][c] == 'R':
+                rook_row, rook_col = r, c
+                break
+
+    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    for dr, dc in directions:
+        r, c = rook_row, rook_col
+        while True:
+            r += dr
+            c += dc
+            if 0 <= r < len(board) and 0 <= c < len(board[0]):
+                if board[r][c] == 'p':
+                    attack += 1
+                    break
+                elif board[r][c] == 'B':
+                    break
+            else:
+                break
     return attack
 
 
