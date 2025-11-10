@@ -33,5 +33,20 @@ def commonChars(words: List[str]) -> List[str]:
     return list(cnt.elements())
 
 
+# Time complexity: O(n * m)
+# Space complexity: O(n)
+def commonChars1(words: list[str]) -> list[str]:
+    common_count = Counter(words[0])
+
+    for word in words[1:]:
+        common_count &= Counter(word)
+
+    result = []
+    for char, freq in common_count.items():
+        result.extend([char] * freq)
+
+    return result
+
+
 assert commonChars(["bella", "label", "roller"]) == ["e", "l", "l"]
 assert commonChars(["cool", "lock", "cook"]) == ["c", "o"]
