@@ -47,6 +47,17 @@ def largestSumAfterKNegations(nums: List[int], k: int) -> int:
     return sum(nums)
 
 
+# Time complexity: O(n + k log n)
+# Space complexity: O(1)
+def largestSumAfterKNegations1(nums: list[int], k: int) -> int:
+    heapq.heapify(nums)
+    for _ in range(k):
+        smallest = heapq.heappop(nums)
+        heapq.heappush(nums, -smallest)
+
+    return sum(nums)
+
+
 assert largestSumAfterKNegations(nums=[4, 2, 3], k=1) == 5
 assert largestSumAfterKNegations(nums=[3, -1, 0, 2], k=3) == 6
 assert largestSumAfterKNegations(nums=[2, -3, -1, 5, -4], k=2) == 13
