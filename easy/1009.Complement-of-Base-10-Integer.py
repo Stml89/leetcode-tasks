@@ -39,6 +39,16 @@ def bitwiseComplement(n: int) -> int:
     return int(f"0b{res}", 2)
 
 
+# Time complexity: O(1)
+# Space complexity: O(1)
+def bitwiseComplement1(n: int) -> int:
+    if n == 0:
+        return 1
+    bit_length = n.bit_length()
+    mask = (1 << bit_length) - 1
+    return n ^ mask
+
+
 assert bitwiseComplement(5) == 2
 assert bitwiseComplement(7) == 0
 assert bitwiseComplement(10) == 5
