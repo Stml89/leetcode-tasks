@@ -31,7 +31,7 @@ A binary number plus its complement will equal 111....111 in binary. Also, N = 0
 
 # Time complexity: O(log n)
 # Space complexity: O(log n)
-def bitwiseComplement(n: int) -> int:
+def bitwiseComplement2(n: int) -> int:
     if n == 0:
         return 1
     a = bin(n)[2:]
@@ -47,6 +47,23 @@ def bitwiseComplement1(n: int) -> int:
     bit_length = n.bit_length()
     mask = (1 << bit_length) - 1
     return n ^ mask
+
+
+# Time complexity: O(log n)
+# Space complexity: O(1)
+def bitwiseComplement(n: int) -> int:
+    cnt = 0
+    ans = 0
+    if n == 0:
+        return 1
+    while n > 0:
+        if n & 1:
+            cnt += 1
+        else:
+            ans = ans + (2 ** cnt)
+            cnt += 1
+        n = n >> 1
+    return ans
 
 
 assert bitwiseComplement(5) == 2
