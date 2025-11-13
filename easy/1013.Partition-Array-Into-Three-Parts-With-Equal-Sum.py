@@ -53,3 +53,4 @@ def canThreePartsEqualSum(arr: List[int]) -> bool:
 assert canThreePartsEqualSum([0, 2, 1, -6, 6, -7, 9, 1, 2, 0, 1])
 assert not canThreePartsEqualSum([0, 2, 1, -6, 6, 7, 9, -1, 2, 0, 1])
 assert canThreePartsEqualSum([3, 3, 6, 5, -2, 2, 5, 1, -9, 4])
+assert not canThreePartsEqualSum([1, -1, 1, -1])
