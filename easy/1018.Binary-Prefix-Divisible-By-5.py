@@ -28,7 +28,7 @@ from typing import List
 
 # Time complexity: O(n)
 # Space complexity: O(n)
-def prefixesDivBy5(nums: List[int]) -> List[bool]:
+def prefixesDivBy51(nums: List[int]) -> List[bool]:
     s = ""
     l = []
     for i in nums:
@@ -39,6 +39,18 @@ def prefixesDivBy5(nums: List[int]) -> List[bool]:
             l.append(False)
 
     return l
+
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+def prefixesDivBy5(nums: List[int]) -> List[bool]:
+    res = []
+    current = 0
+    for num in nums:
+        current = (current * 2 + num) % 5
+        res.append(current == 0)
+
+    return res
 
 
 assert prefixesDivBy5([0, 1, 1]) == [True, False, False]
