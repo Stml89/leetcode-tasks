@@ -44,7 +44,7 @@ Can you find the primitive decomposition? The number of ( and ) characters must 
 
 # Time complexity: O(n)
 # Space complexity: O(n)
-def removeOuterParentheses(s: str) -> str:
+def removeOuterParentheses1(s: str) -> str:
     res = ""
     open_br, close_br = 0, 0
     start = 0
@@ -60,6 +60,24 @@ def removeOuterParentheses(s: str) -> str:
             open_br, close_br = 0, 0
 
     return res
+
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+def removeOuterParentheses(s: str) -> str:
+    ans_char = []
+    depth = 0
+    for c in s:
+        if c == '(':
+            if depth > 0:
+                ans_char.append(c)
+            depth += 1
+        else:
+            depth -= 1
+            if depth > 0:
+                ans_char.append(c)
+
+    return "".join(ans_char)
 
 
 assert removeOuterParentheses("(()())(())") == "()()()"
