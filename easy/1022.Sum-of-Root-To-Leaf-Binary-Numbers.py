@@ -72,3 +72,7 @@ assert s.sumRootToLeaf(root1) == 22
 
 root2 = TreeNode(val=0)
 assert s.sumRootToLeaf(root2) == 0
+
+root3 = TreeNode(val=1)
+root3.left = TreeNode(val=1)
+assert s.sumRootToLeaf(root3) == 3
