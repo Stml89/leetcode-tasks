@@ -58,6 +58,28 @@ class Solution:
 
         return inner(root, s)
 
+    # Time complexity: O(n)
+    # Space complexity: O(n)
+    def sumRootToLeaf1(self, root: Optional[TreeNode]) -> int:
+        total_sum = 0
+
+        def inner(node, current_sum):
+            nonlocal total_sum
+            if not node:
+                return
+
+            current_sum = (current_sum << 1) | node.val
+
+            if not node.left and not node.right:
+                total_sum += current_sum
+                return
+
+            inner(node.left, current_sum)
+            inner(node.right, current_sum)
+
+        inner(root, 0)
+        return total_sum
+
 
 s = Solution()
 
