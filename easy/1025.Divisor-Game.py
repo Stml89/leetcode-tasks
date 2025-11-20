@@ -31,9 +31,7 @@ If the current number is odd, we must subtract an odd number to make it even.
 # Time complexity: O(1)
 # Space complexity: O(1)
 def divisorGame(n: int) -> bool:
-    if n % 2 == 0:
-        return True
-    return False
+    return n % 2 == 0
 
 
 assert divisorGame(2)
