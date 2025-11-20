@@ -34,5 +34,10 @@ def divisorGame(n: int) -> bool:
     return n % 2 == 0
 
 
-assert divisorGame(2)
+assert divisorGame(8)
+assert not divisorGame(7)
+assert divisorGame(6)
+assert not divisorGame(5)
+assert divisorGame(4)
 assert not divisorGame(3)
+assert divisorGame(2)
