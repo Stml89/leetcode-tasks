@@ -45,6 +45,22 @@ def allCellsDistOrder(rows: int, cols: int, rCenter: int, cCenter: int) -> List[
     return [i[:2] for i in sorted(cells, key=lambda i: i[2])]
 
 
+# Time complexity: O(rows * cols)
+# Space complexity: O(rows * cols)
+def allCellsDistOrder1(rows: int, cols: int, rCenter: int, cCenter: int) -> List[List[int]]:
+    buckets = defaultdict(list)
+    for r in range(rows):
+        for c in range(cols):
+            distance = abs(rCenter - r) + abs(cCenter - c)
+            buckets[distance].append([r, c])
+
+    result = []
+    for distance in sorted(buckets.keys()):
+        result.extend(buckets[distance])
+
+    return result
+
+
 assert allCellsDistOrder(rows=1, cols=2, rCenter=0, cCenter=0) == [[0, 0], [0, 1]]
 assert allCellsDistOrder(rows=2, cols=2, rCenter=0, cCenter=1) == [[0, 1], [0, 0], [1, 1], [1, 0]]
 assert allCellsDistOrder(rows=2, cols=3, rCenter=1, cCenter=2) == [[1, 2], [0, 2], [1, 1], [0, 1], [1, 0], [0, 0]]
