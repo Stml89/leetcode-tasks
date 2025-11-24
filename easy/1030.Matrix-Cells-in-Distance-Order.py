@@ -61,6 +61,14 @@ def allCellsDistOrder1(rows: int, cols: int, rCenter: int, cCenter: int) -> List
     return result
 
 
+# Time complexity: O(rows * cols * log(rows * cols))
+# Space complexity: O(rows * cols)
+def allCellsDistOrder2(rows: int, cols: int, rCenter: int, cCenter: int) -> List[List[int]]:
+    cells = [(r, c) for r in range(rows) for c in range(cols)]
+    cells.sort(key=lambda rc: abs(rc[0] - rCenter) + abs(rc[1] - cCenter))
+    return cells
+
+
 assert allCellsDistOrder(rows=1, cols=2, rCenter=0, cCenter=0) == [[0, 0], [0, 1]]
 assert allCellsDistOrder(rows=2, cols=2, rCenter=0, cCenter=1) == [[0, 1], [0, 0], [1, 1], [1, 0]]
 assert allCellsDistOrder(rows=2, cols=3, rCenter=1, cCenter=2) == [[1, 2], [0, 2], [1, 1], [0, 1], [1, 0], [0, 0]]
