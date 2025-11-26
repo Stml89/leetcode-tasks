@@ -52,6 +52,28 @@ def lastStoneWeight(stones: List[int]) -> int:
     return stones[0]
 
 
+# Time complexity: O(n log n)
+# Space complexity: O(n)
+def lastStoneWeight1(stones: list[int]) -> int:
+    if not stones:
+        return 0
+
+    stones.insert(0, 0)
+    for i in range(len(stones)):
+        stones[i] = -stones[i]
+
+    heapq.heapify(stones)
+
+    while len(stones) > 1:
+        stone1 = -heapq.heappop(stones)
+        stone2 = -heapq.heappop(stones)
+        diff = abs(stone1 - stone2)
+        if diff > 0:
+            heapq.heappush(stones, -diff)
+
+    return -stones[0]
+
+
 assert lastStoneWeight([10, 8, 4, 3, 2, 1, 1]) == 1
 assert lastStoneWeight([2, 7, 4, 1, 8, 1]) == 1
 assert lastStoneWeight([1]) == 1
