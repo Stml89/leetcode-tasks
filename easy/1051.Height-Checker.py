@@ -57,6 +57,27 @@ def heightChecker(heights: List[int]) -> int:
     return count
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def heightChecker1(heights: List[int]) -> int:
+    max_height = max(heights)
+    counts = [0] * (max_height + 1)
+    for height in heights:
+        counts[height] += 1
+
+    sorted_heights = []
+    for i in range(max_height + 1):
+        for _ in range(counts[i]):
+            sorted_heights.append(i)
+
+    count = 0
+    for i in range(len(heights)):
+        if heights[i] != sorted_heights[i]:
+            count += 1
+
+    return count
+
+
 assert heightChecker([1, 1, 4, 2, 1, 3]) == 3
 assert heightChecker([5, 1, 2, 3, 4]) == 5
 assert heightChecker([1, 2, 3, 4, 5]) == 0
