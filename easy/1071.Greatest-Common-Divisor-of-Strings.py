@@ -43,3 +43,5 @@ def gcdOfStrings(str1, str2):
 assert gcdOfStrings(str1="ABCABC", str2="ABC") == "ABC"
 assert gcdOfStrings(str1="ABABAB", str2="ABAB") == "AB"
 assert gcdOfStrings(str1="LEET", str2="CODE") == ""
+assert gcdOfStrings(str1="AAAAAA", str2="AAA") == "AAA"
+assert gcdOfStrings(str1="TAUXXTAUXXTAUXXTAUXXTAUXX", str2="TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX") == "TAUXX"
