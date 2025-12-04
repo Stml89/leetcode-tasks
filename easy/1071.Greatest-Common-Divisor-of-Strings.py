@@ -28,7 +28,7 @@ The greatest common divisor must be a prefix of each string, so we can try all p
 
 # Time complexity: O(min(M, N) * log(min(M, N)))
 # Space complexity: O(1)
-def gcdOfStrings(str1, str2):
+def gcdOfStrings1(str1, str2):
     if str1 + str2 != str2 + str1:
         return ""
 
@@ -38,6 +38,19 @@ def gcdOfStrings(str1, str2):
         return a
 
     return str1[:gcd(len(str1), len(str2))]
+
+
+# Time complexity: O(n^2)
+# Space complexity: O(n)
+def gcdOfStrings(str1, str2):
+    smallest_length = min(len(str1), len(str2))
+
+    for i in range(smallest_length, 0, -1):
+        if len(str1) % i != 0 or len(str2) % i != 0:
+            continue
+        if str1[:i] * (len(str1) // i) == str1 and str1[:i] * (len(str2) // i) == str2:
+            return str1[:i]
+        return ""
 
 
 assert gcdOfStrings(str1="ABCABC", str2="ABC") == "ABC"
