@@ -56,5 +56,20 @@ def duplicateZeros(arr: List[int]) -> None:
     return arr  # For local testing purposes only
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def duplicateZeros1(arr: List[int]) -> None:
+    n = len(arr)
+    zeros = arr.count(0)
+    for i in range(n - 1, -1, -1):
+        if i + zeros < n:
+            arr[i + zeros] = arr[i]
+        if arr[i] == 0:
+            zeros -= 1
+            if i + zeros < n:
+                arr[i + zeros] = 0
+    return arr  # For local testing purposes only
+
+
 assert duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]) == [1, 0, 0, 2, 3, 0, 0, 4]
 assert duplicateZeros([1, 2, 3]) == [1, 2, 3]
