@@ -23,5 +23,17 @@ def defangIPaddr(address: str) -> str:
     return address.replace(".", "[.]")
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def defangIPaddr1(address: str) -> str:
+    ans = ""
+    for i in address:
+        if i != '.':
+            ans += i
+        else:
+            ans += "[.]"
+    return ans
+
+
 assert defangIPaddr("1.1.1.1") == "1[.]1[.]1[.]1"
 assert defangIPaddr("255.100.50.0") == "255[.]100[.]50[.]0"
