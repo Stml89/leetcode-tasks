@@ -42,5 +42,17 @@ def numEquivDominoPairs(dominoes: List[List[int]]) -> int:
     return pair_count
 
 
+def numEquivDominoPairs1(dominoes: List[List[int]]) -> int:
+    count = [0] * 100
+    res = 0
+
+    for a, b in dominoes:
+        normalized = a * 10 + b if a < b else b * 10 + a
+        res += count[normalized]
+        count[normalized] += 1
+
+    return res
+
+
 assert numEquivDominoPairs([[1, 2], [2, 1], [3, 4], [5, 6]]) == 1
 assert numEquivDominoPairs([[1, 2], [1, 2], [1, 1], [1, 2], [2, 2]]) == 3
