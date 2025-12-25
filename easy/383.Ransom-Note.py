@@ -29,6 +29,15 @@ def canConstruct(ransomNote: str, magazine: str) -> bool:
     return True
 
 
+def canConstruct1(ransomNote: str, magazine: str) -> bool:
+    for i in ransomNote:
+        if i in magazine:
+            magazine = magazine.replace(i, "", 1)
+        else:
+            return False
+    return True
+
+
 assert not canConstruct("aa", "ab")
 assert not canConstruct("a", "b")
 assert canConstruct("aa", "aab")
