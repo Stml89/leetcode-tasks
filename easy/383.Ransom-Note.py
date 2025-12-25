@@ -32,3 +32,5 @@ def canConstruct(ransomNote: str, magazine: str) -> bool:
 assert not canConstruct("aa", "ab")
 assert not canConstruct("a", "b")
 assert canConstruct("aa", "aab")
+assert canConstruct("aab", "baa")
+assert canConstruct("fffbfg", "effjfggbffjdgbjjhhdegh")
