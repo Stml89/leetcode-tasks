@@ -28,11 +28,12 @@ Handle the case of a leap year.
 Hint 3
 Find the number of days for each month of the given year.
 """
+from datetime import datetime
 
 
 # Time complexity: O(year - 1971 + month)
 # Space complexity: O(1)
-def dayOfTheWeek(day: int, month: int, year: int) -> str:
+def dayOfTheWeek1(day: int, month: int, year: int) -> str:
     days_of_week = ["Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]
     days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -49,6 +50,13 @@ def dayOfTheWeek(day: int, month: int, year: int) -> str:
     total_days += day - 1
 
     return days_of_week[total_days % 7]
+
+
+def dayOfTheWeek(day: int, month: int, year: int) -> str:
+    date_obj = datetime(year, month, day)
+    weekday_name = date_obj.strftime('%A')
+
+    return weekday_name
 
 
 assert dayOfTheWeek(31, 8, 2019) == "Saturday"
