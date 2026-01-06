@@ -35,6 +35,22 @@ def maxNumberOfBalloons(text: str) -> int:
     return min(count['b'], count['a'], count['l'] // 2, count['o'] // 2, count['n'])
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def maxNumberOfBalloons1(text: str) -> int:
+    c = Counter(text)
+    counter = 0
+
+    while c['b'] >= 1 and c['a'] >= 1 and c['l'] >= 2 and c['o'] >= 2 and c['n'] >= 1:
+        c['b'] -= 1
+        c['a'] -= 1
+        c['l'] -= 2
+        c['o'] -= 2
+        c['n'] -= 1
+        counter += 1
+    return counter
+
+
 assert maxNumberOfBalloons("nlaebolko") == 1
 assert maxNumberOfBalloons("loonbalxballpoon") == 2
 assert maxNumberOfBalloons("leetcode") == 0
