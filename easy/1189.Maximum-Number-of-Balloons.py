@@ -51,6 +51,20 @@ def maxNumberOfBalloons1(text: str) -> int:
     return counter
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def maxNumberOfBalloons2(text: str) -> int:
+    chars = Counter(text)
+
+    b = chars.get("b", 0)
+    a = chars.get("a", 0)
+    l = chars.get("l", 0) // 2
+    o = chars.get("o", 0) // 2
+    n = chars.get("n", 0)
+
+    return min(b, a, l, o, n)
+
+
 assert maxNumberOfBalloons("nlaebolko") == 1
 assert maxNumberOfBalloons("loonbalxballpoon") == 2
 assert maxNumberOfBalloons("leetcode") == 0
