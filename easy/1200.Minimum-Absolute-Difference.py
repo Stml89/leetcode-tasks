@@ -42,6 +42,7 @@ def minimumAbsDifference(arr: List[int]) -> List[List[int]]:
     for i in range(1, len(s)):
         diff = s[i] - s[i - 1]
         if diff < min_diff:
+            result.clear()
             min_diff = diff
             result.append([s[i - 1], s[i]])
         elif diff == min_diff:
@@ -53,3 +54,4 @@ def minimumAbsDifference(arr: List[int]) -> List[List[int]]:
 assert minimumAbsDifference([4, 2, 1, 3]) == [[1, 2], [2, 3], [3, 4]]
 assert minimumAbsDifference([1, 3, 6, 10, 15]) == [[1, 3]]
 assert minimumAbsDifference([3, 8, -10, 23, 19, -4, -14, 27]) == [[-14, -10], [19, 23], [23, 27]]
+assert minimumAbsDifference([40, 11, 26, 27, -20]) == [[26, 27]]
