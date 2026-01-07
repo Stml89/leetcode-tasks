@@ -42,9 +42,8 @@ def minimumAbsDifference(arr: List[int]) -> List[List[int]]:
     for i in range(1, len(s)):
         diff = s[i] - s[i - 1]
         if diff < min_diff:
-            result.clear()
             min_diff = diff
-            result.append([s[i - 1], s[i]])
+            result = [[s[i - 1], s[i]]]
         elif diff == min_diff:
             result.append([s[i - 1], s[i]])
 
