@@ -57,5 +57,30 @@ def numPrimeArrangements(n: int) -> int:
     return ans % (10 ** 9 + 7)
 
 
+# Time complexity: O(n * √n)
+# Space complexity: O(1)
+def numPrimeArrangements(n: int) -> int:
+    # Time complexity: O(num * √num)
+    def is_prime(num: int) -> bool:
+        if num < 2:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+
+    # Time complexity: O(k)
+    def factorial(k: int) -> int:
+        result = 1
+        for i in range(2, k + 1):
+            result *= i
+        return result
+
+    MOD = 10 ** 9 + 7
+    prime_count = sum(1 for i in range(1, n + 1) if is_prime(i))
+
+    return (factorial(prime_count) * factorial(n - prime_count)) % MOD
+
+
 assert numPrimeArrangements(5) == 12
 assert numPrimeArrangements(100) == 682289015
