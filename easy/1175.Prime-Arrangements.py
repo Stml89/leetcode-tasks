@@ -28,6 +28,7 @@ composite numbers over composite indices.
 Hint 3
 The number of permutations equals the factorial.
 """
+from math import isqrt, factorial
 
 
 # Time complexity: O(n log log n)
@@ -59,7 +60,7 @@ def numPrimeArrangements(n: int) -> int:
 
 # Time complexity: O(n * √n)
 # Space complexity: O(1)
-def numPrimeArrangements(n: int) -> int:
+def numPrimeArrangements1(n: int) -> int:
     # Time complexity: O(num * √num)
     def is_prime(num: int) -> bool:
         if num < 2:
@@ -80,6 +81,22 @@ def numPrimeArrangements(n: int) -> int:
     prime_count = sum(1 for i in range(1, n + 1) if is_prime(i))
 
     return (factorial(prime_count) * factorial(n - prime_count)) % MOD
+
+
+# Time complexity: O(n * √n)
+# Space complexity: O(1)
+def numPrimeArrangements2(n: int) -> int:
+    # Time complexity: O(n * √n)
+    def is_prime(n: int) -> bool:
+        for i in range(2, isqrt(n) + 1):
+            if n % i == 0:
+                return False
+        return n > 1
+
+    MOD = 10 ** 9 + 7
+    p = sum(map(is_prime, range(1, n + 1)))
+
+    return (factorial(n - p) * factorial(p)) % MOD
 
 
 assert numPrimeArrangements(5) == 12
