@@ -39,6 +39,22 @@ def uniqueOccurrences(arr: List[int]) -> bool:
     return len(uniq_occur) == len(count)
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def uniqueOccurrences1(arr: List[int]) -> bool:
+    counter = {}
+    for i in arr:
+        counter[i] = counter.get(i, 0) + 1
+
+    occur_set = set()
+    for occur in counter.values():
+        if occur in occur_set:
+            return False
+        occur_set.add(occur)
+
+    return True
+
+
 assert uniqueOccurrences([1, 2, 2, 1, 1, 3])
 assert not uniqueOccurrences([1, 2])
 assert uniqueOccurrences([-3, 0, 1, -3, 1, 1, 1, -3, 10, 0])
