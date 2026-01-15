@@ -38,24 +38,6 @@ Whenever the balance variable reaches zero then we increase the answer by one.
 # Time complexity: O(n)
 # Space complexity: O(1)
 def balancedStringSplit(s: str) -> int:
-    count_r = count_l = balanced_count = 0
-    for i in s:
-        if i == 'R':
-            count_r += 1
-        else:
-            count_l += 1
-
-        if count_r == count_l:
-            balanced_count += 1
-            count_r = 0
-            count_l = 0
-
-    return balanced_count
-
-
-# Time complexity: O(n)
-# Space complexity: O(1)
-def balancedStringSplit1(s: str) -> int:
     counter = balanced_count = 0
     for i in s:
         if i == 'R':
