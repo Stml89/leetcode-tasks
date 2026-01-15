@@ -53,6 +53,23 @@ def balancedStringSplit(s: str) -> int:
     return balanced_count
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def balancedStringSplit1(s: str) -> int:
+    counter = balanced_count = 0
+    for i in s:
+        if i == 'R':
+            counter += 1
+        else:
+            counter -= 1
+
+        if counter == 0:
+            balanced_count += 1
+            counter = 0
+
+    return balanced_count
+
+
 assert balancedStringSplit("RLRRLLRLRL") == 4
 assert balancedStringSplit("RLRRRLLRLL") == 2
 assert balancedStringSplit("LLLLRRRR") == 1
