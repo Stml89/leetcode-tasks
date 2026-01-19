@@ -47,6 +47,16 @@ def checkStraightLine(coordinates: List[List[int]]) -> bool:
     return True
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def checkStraightLine1(coordinates: List[List[int]]) -> bool:
+    (x0, y0), (x1, y1) = coordinates[0], coordinates[1]
+    for x, y in coordinates[2:]:
+        if (y1 - y0) * (x - x1) != (y - y1) * (x1 - x0):
+            return False
+    return True
+
+
 assert checkStraightLine([[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]])
 assert not checkStraightLine([[1, 1], [2, 2], [3, 4], [4, 5], [5, 6], [7, 7]])
 assert checkStraightLine([[0, 0], [0, 1], [0, -1]])
