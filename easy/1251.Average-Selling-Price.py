@@ -64,9 +64,8 @@ Average selling price for product 2 = ((200 * 15) + (30 * 30)) / 230 = 16.96
 """
 # select
 #     p.product_id,
-#     round(sum(p.price * s.units)/sum(s.units), 2) as average_price
-# from Prices as p
-# left join UnitsSold as s
-# on p.product_id = s.product_id
-# where s.purchase_date between p.start_date AND p.end_date
-# group by p.product_id;
+#     coalesce(round((sum(price * units) / sum(units)), 2), 0) as average_price
+# from Prices p
+# left join UnitsSold us on p.product_id = us.product_id and
+#     us.purchase_date between p.start_date and p.end_date
+# group by p.product_id
