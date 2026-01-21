@@ -64,5 +64,24 @@ def oddCells(m: int, n: int, indices: List[List[int]]) -> int:
     return odd_count
 
 
+# Time complexity: O(m * n)
+# Space complexity: O(m + n)
+def oddCells1(m: int, n: int, indices: List[List[int]]) -> int:
+    row_increments = [0] * m
+    col_increments = [0] * n
+
+    for r, c in indices:
+        row_increments[r] += 1
+        col_increments[c] += 1
+
+    odd_count = 0
+    for i in range(m):
+        for j in range(n):
+            if (row_increments[i] + col_increments[j]) % 2 == 1:
+                odd_count += 1
+
+    return odd_count
+
+
 assert oddCells(2, 3, [[0, 1], [1, 1]]) == 6
 assert oddCells(2, 2, [[1, 1], [0, 0]]) == 0
