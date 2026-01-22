@@ -53,14 +53,17 @@ from typing import List
 # Space complexity: O(m * n)
 def shiftGrid(grid: List[List[int]], k: int) -> List[List[int]]:
     m, n = len(grid), len(grid[0])
+    total_elements = m * n
+    k = k % total_elements
 
-    flat_list = [grid[i][j] for i in range(m) for j in range(n)]
+    new_grid = [[0] * n for _ in range(m)]
 
-    shifted_list = flat_list[-k:] + flat_list[:-k]
-
-    new_grid = []
     for i in range(m):
-        new_grid.append(shifted_list[i * n:(i + 1) * n])
+        for j in range(n):
+            new_position = (i * n + j + k) % total_elements
+            new_row = new_position // n
+            new_col = new_position % n
+            new_grid[new_row][new_col] = grid[i][j]
 
     return new_grid
 
