@@ -53,24 +53,20 @@ from typing import List
 # Space complexity: O(m * n)
 def shiftGrid(grid: List[List[int]], k: int) -> List[List[int]]:
     m, n = len(grid), len(grid[0])
-    if m == 0 or n == 0:
-        return grid
-    if k <= 0 or k % (m * n) == 0:
-        return grid
 
     flat_list = [grid[i][j] for i in range(m) for j in range(n)]
+
     shifted_list = flat_list[-k:] + flat_list[:-k]
 
-    i = 0
-    for row in range(m):
-        for col in range(n):
-            grid[row][col] = shifted_list[i]
-            i += 1
+    new_grid = []
+    for i in range(m):
+        new_grid.append(shifted_list[i * n:(i + 1) * n])
 
-    return grid
+    return new_grid
 
 
 assert shiftGrid([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1) == [[9, 1, 2], [3, 4, 5], [6, 7, 8]]
 assert shiftGrid([[3, 8, 1, 9], [19, 7, 2, 5], [4, 6, 11, 10], [12, 0, 21, 13]], 4) == [[12, 0, 21, 13], [3, 8, 1, 9],
                                                                                         [19, 7, 2, 5], [4, 6, 11, 10]]
 assert shiftGrid([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 9) == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+assert shiftGrid([[1], [2], [3], [4], [7], [6], [5]], 23) == [[6], [5], [1], [2], [3], [4], [7]]
