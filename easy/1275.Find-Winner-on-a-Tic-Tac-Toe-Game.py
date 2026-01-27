@@ -80,6 +80,40 @@ def tictactoe(moves: List[List[int]]) -> str:
         return "Pending"
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def tictactoe1(moves: List[List[int]]) -> str:
+    if len(moves) < 5:
+        return "Pending"
+
+    player_a_move = []
+    player_b_move = []
+    for x in range(len(moves)):
+        if x % 2 == 0:
+            player_a_move.append(moves[x])
+        else:
+            player_b_move.append(moves[x])
+
+    cnt = 0
+    for i in range(1, len(player_a_move)):
+        x1, y1 = player_a_move[i - 1]
+        x2, y2 = player_a_move[i]
+        if abs(x1 - x2) == abs(y1 - y2):
+            cnt += 1
+        if cnt >= 2:
+            return "A"
+
+    cnt = 0
+    for i in range(1, len(player_b_move)):
+        x1, y1 = player_b_move[i - 1]
+        x2, y2 = player_b_move[i]
+        if abs(x1 - x2) == abs(y1 - y2):
+            cnt += 1
+        if cnt >= 2:
+            return "B"
+    return "Draw"
+
+
 assert tictactoe([[0, 0], [2, 0], [1, 1], [2, 1], [2, 2]]) == "A"
 assert tictactoe([[0, 0], [1, 1], [0, 1], [0, 2], [1, 0], [2, 0]]) == "B"
 assert tictactoe([[0, 0], [1, 1], [2, 0], [1, 0], [1, 2], [2, 1], [0, 1], [0, 2], [2, 2]]) == "Draw"
