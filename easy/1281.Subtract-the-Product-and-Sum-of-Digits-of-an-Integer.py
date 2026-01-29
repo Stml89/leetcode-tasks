@@ -46,5 +46,18 @@ def subtractProductAndSum(n: int) -> int:
     return multiply - summary
 
 
+# Time complexity: O(d), where d is the number of digits in n
+# Space complexity: O(d)
+def subtractProductAndSum1(n: int) -> int:
+    multiply = 1
+    summary = 0
+    s = str(n)
+    for i in s:
+        i = int(i)
+        multiply *= i
+        summary += i
+    return multiply - summary
+
+
 assert subtractProductAndSum(234) == 15
 assert subtractProductAndSum(4421) == 21
