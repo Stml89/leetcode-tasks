@@ -51,8 +51,7 @@ def subtractProductAndSum(n: int) -> int:
 def subtractProductAndSum1(n: int) -> int:
     multiply = 1
     summary = 0
-    s = str(n)
-    for i in s:
+    for i in str(n):
         i = int(i)
         multiply *= i
         summary += i
