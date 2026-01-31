@@ -47,6 +47,30 @@ def islandPerimeter(grid: List[List[int]]) -> int:
     return output
 
 
+# Time complexity: O(m * n)
+# Space complexity: O(1)
+def islandPerimeter1(grid: List[List[int]]) -> int:
+    column_length = len(grid)
+    row_length = len(grid[0])
+    count = 0
+    for i in range(column_length):
+        for j in range(row_length):
+            if grid[i][j] == 1:
+                if grid[i][j - 1] != 1 or j - 1 == -1:
+                    count += 1
+                if j + 1 == row_length:
+                    count += 1
+                elif grid[i][j + 1] != 1:
+                    count += 1
+                if grid[i - 1][j] != 1 or i - 1 == -1:
+                    count += 1
+                if i + 1 >= column_length:
+                    count += 1
+                elif grid[i + 1][j] != 1:
+                    count += 1
+    return count
+
+
 assert islandPerimeter([[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]) == 16
 assert islandPerimeter([[1]]) == 4
 assert islandPerimeter([[1, 0]]) == 4
