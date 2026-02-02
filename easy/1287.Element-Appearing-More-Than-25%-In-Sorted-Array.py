@@ -38,5 +38,20 @@ def findSpecialInteger(arr: List[int]) -> int:
             return k
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def findSpecialInteger1(arr: List[int]) -> int:
+    threshold = len(arr) // 4
+    count = 1
+    for i in range(1, len(arr)):
+        if arr[i] == arr[i - 1]:
+            count += 1
+            if count > threshold:
+                return arr[i]
+        else:
+            count = 1
+    return arr[0]
+
+
 assert findSpecialInteger([1, 2, 2, 6, 6, 6, 6, 7, 10]) == 6
 assert findSpecialInteger([1, 1]) == 1
