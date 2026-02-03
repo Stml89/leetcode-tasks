@@ -50,6 +50,18 @@ def getDecimalValue(head: Optional[ListNode]) -> int:
     return int(number, 2)
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def getDecimalValue1(head: Optional[ListNode]) -> int:
+    number = 0
+    current = head
+    while current:
+        number = (number << 1) | current.val
+        current = current.next
+
+    return number
+
+
 assert getDecimalValue(ListNode(1, ListNode(0, ListNode(1)))) == 5
 assert getDecimalValue(ListNode(0)) == 0
 assert getDecimalValue(ListNode(1, ListNode(0, ListNode(0, ListNode(1, ListNode(0, ListNode(0, ListNode(1)))))))) == 73
