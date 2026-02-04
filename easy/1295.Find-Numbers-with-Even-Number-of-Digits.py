@@ -50,6 +50,17 @@ def findNumbers(nums: List[int]) -> int:
     return total
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def findNumbers1(nums: List[int]) -> int:
+    total = 0
+    for i in nums:
+        if len(str(i)) % 2 == 0:
+            total += 1
+
+    return total
+
+
 assert findNumbers([12, 345, 2, 6, 7896]) == 2
 assert findNumbers([555, 901, 482, 1771]) == 1
 assert findNumbers([1, 22, 333, 4444, 55555]) == 2
