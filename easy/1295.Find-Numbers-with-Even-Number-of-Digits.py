@@ -61,6 +61,12 @@ def findNumbers1(nums: List[int]) -> int:
     return total
 
 
+# Time complexity: O(n * log M), where M is the maximum value in nums.
+# Space complexity: O(log M), where M is the maximum value in nums.
+def findNumbers2(nums: List[int]) -> int:
+    return sum(1 for i in nums if len(str(i)) % 2 == 0)
+
+
 assert findNumbers([12, 345, 2, 6, 7896]) == 2
 assert findNumbers([555, 901, 482, 1771]) == 1
 assert findNumbers([1, 22, 333, 4444, 55555]) == 2
