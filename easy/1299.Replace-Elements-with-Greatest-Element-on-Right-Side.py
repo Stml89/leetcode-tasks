@@ -45,5 +45,16 @@ def replaceElements(arr: List[int]) -> List[int]:
     return arr
 
 
+# Time complexity: O(n^2)
+# Space complexity: O(n)
+def replaceElements1(arr: List[int]) -> List[int]:
+    n = len(arr)
+    for i in range(n - 1):
+        m_right = max(arr[i + 1:])
+        arr[i] = m_right
+    arr[-1] = -1
+    return arr
+
+
 assert replaceElements([17, 18, 5, 4, 6, 1]) == [18, 6, 6, 6, 1, -1]
 assert replaceElements([400]) == [-1]
