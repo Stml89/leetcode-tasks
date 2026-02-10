@@ -46,5 +46,24 @@ def freqAlphabets(s: str) -> str:
     return ''.join(reversed(result))
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def freqAlphabets1(s: str) -> str:
+    result = []
+    i = 0
+    while i < len(s):
+        if i + 2 < len(s) and s[i + 2] == '#':
+            number = int(s[i:i + 2])
+            i += 3
+        else:
+            number = int(s[i])
+            i += 1
+
+        char = chr(number + 96)
+        result.append(char)
+
+    return ''.join(result)
+
+
 assert freqAlphabets("10#11#12") == "jkab"
 assert freqAlphabets("1326#") == "acz"
