@@ -52,5 +52,23 @@ def getNoZeroIntegers(n: int) -> List[int]:
             return [a, b]
 
 
+# Time complexity: O(n log n)
+# Space complexity: O(1)
+def getNoZeroIntegers1(n: int) -> List[int]:
+    def isNonZero(x: int):
+        s = str(x)
+
+        return '0' in s
+
+    a = n - 1
+    b = 1
+
+    while isNonZero(a) or isNonZero(b):
+        a -= 1
+        b += 1
+
+    return [a, b]
+
+
 assert getNoZeroIntegers(2) == [1, 1]
 assert getNoZeroIntegers(11) == [2, 9]
