@@ -82,3 +82,19 @@ Products with product_id = 5 is ordered in February a total of (50 + 50) = 100.
 # where o.order_date >= '2020-02-01' AND o.order_date < '2020-03-01'
 # group by o.product_id
 # having SUM(o.unit) >= 100
+
+# SELECT
+#     p.product_name,
+#     total.unit
+# FROM Products p
+# JOIN (
+#     SELECT
+#         product_id,
+#         SUM(unit) AS unit
+#     FROM Orders
+#     WHERE order_date >= '2020-02-01'
+#       AND order_date <= '2020-02-29'
+#     GROUP BY product_id
+#     HAVING SUM(unit) >= 100
+# ) total ON p.product_id = total.product_id
+# ORDER BY p.product_name;
