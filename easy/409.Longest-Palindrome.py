@@ -39,6 +39,29 @@ def longestPalindrome(s: str) -> int:
     return count
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def longestPalindrome1(s: str) -> int:
+    d = {}
+    for i in s:
+        if i in d:
+            d[i] += 1
+        else:
+            d.setdefault(i, 1)
+
+    count = 0
+    is_odd = False
+    for freq in d.values():
+        if freq % 2 == 0:
+            count += freq
+        else:
+            count += freq - 1
+            is_odd = True
+    if is_odd:
+        count += 1
+    return count
+
+
 assert longestPalindrome("abccccdd") == 7
 assert longestPalindrome("a") == 1
 assert longestPalindrome("bb") == 2
