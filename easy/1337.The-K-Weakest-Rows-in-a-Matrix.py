@@ -61,7 +61,7 @@ from typing import List
 
 # Time complexity: O(n * m)
 # Space complexity: O(n)
-def kWeakestRows1(mat: List[List[int]], k: int) -> List[int]:
+def kWeakestRows(mat: List[List[int]], k: int) -> List[int]:
     soldiers = defaultdict(list)
 
     for i in range(len(mat)):
