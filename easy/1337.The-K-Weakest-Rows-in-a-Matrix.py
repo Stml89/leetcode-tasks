@@ -81,7 +81,7 @@ def kWeakestRows(mat: List[List[int]], k: int) -> List[int]:
 
 # Time complexity: O(n * m + n log n)
 # Space complexity: O(n)
-def kWeakestRows(mat: List[List[int]], k: int) -> List[int]:
+def kWeakestRows1(mat: List[List[int]], k: int) -> List[int]:
     candidates = []
     for i, row in enumerate(mat):
         candidates.append([sum(row), i])
