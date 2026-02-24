@@ -52,6 +52,18 @@ def numberOfSteps(num: int) -> int:
     return cnt
 
 
+# Time complexity: O(log n)
+# Space complexity: O(1)
+def numberOfSteps1(num: int) -> int:
+    cnt = 0
+
+    while num:
+        cnt += 1 + (num & 1)
+        num >>= 1
+
+    return cnt
+
+
 assert numberOfSteps(14) == 6
 assert numberOfSteps(8) == 4
 assert numberOfSteps(123) == 12
