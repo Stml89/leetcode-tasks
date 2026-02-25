@@ -42,6 +42,19 @@ def checkIfExist(arr: List[int]) -> bool:
     return False
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def checkIfExist1(arr: List[int]) -> bool:
+    seen = set()
+
+    for num in arr:
+        if 2 * num in seen or (num % 2 == 0 and num // 2 in seen):
+            return True
+        seen.add(num)
+
+    return False
+
+
 assert checkIfExist([10, 2, 5, 3])
 assert not checkIfExist([3, 1, 7, 11])
 assert not checkIfExist([-2, 0, 10, -19, 4, 6, -8])
