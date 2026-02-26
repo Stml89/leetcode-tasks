@@ -42,5 +42,20 @@ def countNegatives(grid: List[List[int]]) -> int:
     return count
 
 
-assert countNegatives([[4, 3, 2, -1], [3, 2, 1, -1], [1, 1, -1, -2], [-1, -1, -2, -3]]) == 8
-assert countNegatives([[3, 2], [1, 0]]) == 0
+# Time complexity: O(m + n)
+# Space complexity: O(1)
+def countNegatives1(grid: List[List[int]]) -> int:
+    m, n = len(grid), len(grid[0])
+    row, col = 0, n - 1
+    count = 0
+    while row < m and col >= 0:
+        if grid[row][col] < 0:
+            count += (m - row)
+            col -= 1
+        else:
+            row += 1
+    return count
+
+
+assert countNegatives1([[4, 3, 2, -1], [3, 2, 1, -1], [1, 1, -1, -2], [-1, -1, -2, -3]]) == 8
+assert countNegatives1([[3, 2], [1, 0]]) == 0
