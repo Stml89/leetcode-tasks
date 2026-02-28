@@ -39,6 +39,12 @@ def thirdMax(nums: List[int]) -> int:
         return max(nums)
 
 
+# Time complexity: O(n log n)
+# Space complexity: O(n)
+def thirdMax1(nums: List[int]) -> int:
+    return sorted(set(nums))[-3]
+
+
 assert thirdMax([3, 2, 1]) == 1
 assert thirdMax([1, 2]) == 2
 assert thirdMax([2, 2, 3, 1]) == 1
