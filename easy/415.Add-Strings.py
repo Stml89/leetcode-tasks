@@ -25,6 +25,8 @@ num1 and num2 don't have any leading zeros except for the zero itself.
 from itertools import zip_longest
 
 
+# Time complexity: O(n^2)
+# Space complexity: O(n)
 def addStrings(num1: str, num2: str) -> str:
     answer = ''
     carry = False
