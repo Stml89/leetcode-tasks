@@ -47,5 +47,14 @@ def sortByBits1(arr: List[int]) -> List[int]:
     return sorted(arr, key=lambda x: (bin(x).count('1'), x))
 
 
+# Time complexity: O(m log m * log n)
+# Space complexity: O(m)
+def sortByBits2(arr: List[int]) -> List[int]:
+    def sort_key(num):
+        return num.bit_count(), num
+
+    return sorted(arr, key=sort_key)
+
+
 assert sortByBits([0, 1, 2, 3, 4, 5, 6, 7, 8]) == [0, 1, 2, 4, 8, 3, 5, 6, 7]
 assert sortByBits([1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]) == [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
