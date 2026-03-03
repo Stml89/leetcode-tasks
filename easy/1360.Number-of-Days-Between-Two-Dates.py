@@ -55,6 +55,29 @@ def daysBetweenDates(date1: str, date2: str) -> int:
     return abs(day_count1 - day_count2)
 
 
+# Time complexity: O(1)
+# Space complexity: O(1)
+def daysBetweenDates1(date1: str, date2: str) -> int:
+    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    def is_leap(year: int):
+        return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+
+    def days_since_start(date: str):
+        y, m, d = map(int, date.split('-'))
+        days = 365 * (y - 1) + (y - 1) // 4 - (y - 1) // 100 + (y - 1) // 400
+
+        for i in range(m - 1):
+            days += days_in_month[i]
+        if m > 2 and is_leap(y):
+            days += 1
+
+        days += d
+        return days
+
+    return abs(days_since_start(date1) - days_since_start(date2))
+
+
 assert daysBetweenDates("2019-06-29", "2019-06-30") == 1
 assert daysBetweenDates("2020-01-15", "2019-12-31") == 15
 assert daysBetweenDates("2009-08-18", "2080-08-08") == 25923
