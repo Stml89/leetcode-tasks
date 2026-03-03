@@ -57,3 +57,4 @@ def daysBetweenDates(date1: str, date2: str) -> int:
 
 assert daysBetweenDates("2019-06-29", "2019-06-30") == 1
 assert daysBetweenDates("2020-01-15", "2019-12-31") == 15
+assert daysBetweenDates("2009-08-18", "2080-08-08") == 25923
