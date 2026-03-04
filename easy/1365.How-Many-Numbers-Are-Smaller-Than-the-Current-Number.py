@@ -49,6 +49,13 @@ def smallerNumbersThanCurrent(nums: List[int]) -> List[int]:
     return result
 
 
+# Time complexity: O(n^2)
+# Space complexity: O(n)
+def smallerNumbersThanCurrent1(nums: List[int]) -> List[int]:
+    sorted_nums = sorted(nums)
+    return [sorted_nums.index(num) for num in nums]
+
+
 assert smallerNumbersThanCurrent([8, 1, 2, 2, 3]) == [4, 0, 1, 1, 3]
 assert smallerNumbersThanCurrent([6, 5, 4, 8]) == [2, 1, 0, 3]
 assert smallerNumbersThanCurrent([7, 7, 7, 7]) == [0, 0, 0, 0]
