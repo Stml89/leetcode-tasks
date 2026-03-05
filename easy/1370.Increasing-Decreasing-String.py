@@ -59,5 +59,27 @@ def sortString(s: str) -> str:
     return ''.join(result)
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def sortString1(s: str) -> str:
+    result = []
+    char_count = [0] * 26
+    for char in s:
+        char_count[ord(char) - ord('a')] += 1
+
+    while len(result) < len(s):
+        for i in range(26):
+            if char_count[i] > 0:
+                result.append(chr(i + ord('a')))
+                char_count[i] -= 1
+
+        for i in range(25, -1, -1):
+            if char_count[i] > 0:
+                result.append(chr(i + ord('a')))
+                char_count[i] -= 1
+
+    return ''.join(result)
+
+
 assert sortString("aaaabbbbcccc") == "abccbaabccba"
 assert sortString("rat") == "art"
