@@ -81,5 +81,21 @@ def sortString1(s: str) -> str:
     return ''.join(result)
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def sortString2(s: str) -> str:
+    char_count = Counter(s)
+    pattern = ascii_lowercase + ascii_lowercase[::-1]
+    result = []
+
+    while len(result) < len(s):
+        for char in pattern:
+            if char_count[char] > 0:
+                result.append(char)
+                char_count[char] -= 1
+
+    return "".join(result)
+
+
 assert sortString("aaaabbbbcccc") == "abccbaabccba"
 assert sortString("rat") == "art"
