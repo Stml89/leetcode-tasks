@@ -57,6 +57,20 @@ class Solution:
 
         return self.getTargetCopy(original.right, cloned.right, target)
 
+    # Time complexity: O(n)
+    # Space complexity: O(h)
+    def getTargetCopy1(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
+        def dfs(original_node: TreeNode, cloned_node: TreeNode) -> TreeNode:
+            if original_node is None:
+                return None
+
+            if original_node == target:
+                return cloned_node
+
+            return dfs(original_node.left, cloned_node.left) or dfs(original_node.right, cloned_node.right)
+
+        return dfs(original, cloned)
+
 
 original = TreeNode(7)
 original.left = TreeNode(4)
