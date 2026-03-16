@@ -71,6 +71,20 @@ def findTheDistanceValue(arr1: List[int], arr2: List[int], d: int) -> int:
     return count
 
 
+# Time complexity: O(n log n + m log n)
+# Space complexity: O(1)
+def findTheDistanceValue1(arr1: List[int], arr2: List[int], d: int) -> int:
+    arr2.sort()
+    distance_value_count = 0
+
+    for num in arr1:
+        left_bound_index = bisect_left(arr2, num - d)
+        is_valid = (left_bound_index == len(arr2) or arr2[left_bound_index] > num + d)
+        distance_value_count += is_valid
+
+    return distance_value_count
+
+
 assert findTheDistanceValue([4, 5, 8], [10, 9, 1, 8], 2) == 2
 assert findTheDistanceValue([1, 4, 2, 3], [-4, -3, 6, 10, 20, 30], 3) == 2
 assert findTheDistanceValue([2, 1, 100, 3], [-5, -2, 10, -3, 7], 6) == 1
