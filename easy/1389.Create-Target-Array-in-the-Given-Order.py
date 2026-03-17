@@ -55,6 +55,15 @@ def createTargetArray(nums: List[int], index: List[int]) -> List[int]:
     return target
 
 
+# Time complexity: O(n^2)
+# Space complexity: O(n)
+def createTargetArray1(nums, index):
+    target = []
+    for num, idx in zip(nums, index):
+        target.insert(idx, num)
+    return target
+
+
 assert createTargetArray(nums=[0, 1, 2, 3, 4], index=[0, 1, 2, 2, 1]) == [0, 4, 1, 3, 2]
 assert createTargetArray(nums=[1, 2, 3, 4, 0], index=[0, 1, 2, 3, 0]) == [0, 1, 2, 3, 4]
 assert createTargetArray(nums=[1], index=[0]) == [1]
