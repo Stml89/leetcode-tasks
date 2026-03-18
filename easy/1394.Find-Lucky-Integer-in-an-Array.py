@@ -44,6 +44,15 @@ def findLucky(arr: List[int]) -> int:
     return max(lucky_numbers) if lucky_numbers else -1
 
 
+# Time complexity: O(m)
+# Space complexity: O(n)
+def findLucky1(arr: List[int]) -> int:
+    count = Counter(arr)
+    lucky_numbers = [num for num, freq in count.items() if num == freq]
+
+    return max(lucky_numbers) if lucky_numbers else -1
+
+
 assert findLucky([2, 2, 3, 4]) == 2
 assert findLucky([1, 2, 2, 3, 3, 3]) == 3
 assert findLucky([2, 2, 2, 3, 3]) == -1
