@@ -72,5 +72,25 @@ def countLargestGroup2(n: int) -> int:
     return counts.count(mx)
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def countLargestGroup3(n: int) -> int:
+    counts = [0] * 37
+    digit_sum = 0
+
+    for i in range(1, n + 1):
+        digit_sum += 1
+
+        x = i
+        while x % 10 == 0:
+            digit_sum -= 9
+            x //= 10
+
+        counts[digit_sum] += 1
+
+    mx = max(counts)
+    return counts.count(mx)
+
+
 assert countLargestGroup(13) == 4
 assert countLargestGroup(2) == 2
