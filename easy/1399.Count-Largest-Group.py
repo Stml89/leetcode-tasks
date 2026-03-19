@@ -54,5 +54,23 @@ def countLargestGroup1(n: int) -> int:
     return sum(1 for v in groups.values() if v == max_size)
 
 
+MAX_N = 10001
+_dp = [0] * MAX_N
+for i in range(1, MAX_N):
+    _dp[i] = _dp[i // 10] + (i % 10)
+
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+def countLargestGroup2(n: int) -> int:
+    sums = _dp[1: n + 1]
+    counts = [0] * 37
+    for s in sums:
+        counts[s] += 1
+
+    mx = max(counts)
+    return counts.count(mx)
+
+
 assert countLargestGroup(13) == 4
 assert countLargestGroup(2) == 2
