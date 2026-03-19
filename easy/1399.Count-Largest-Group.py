@@ -40,5 +40,19 @@ def countLargestGroup(n: int) -> int:
     return sum(1 for size in groups.values() if size == max_size)
 
 
+# Time complexity: O(n * d), where n is the input number and d is the number of digits in the largest number
+# Space complexity: O(log n)
+def countLargestGroup1(n: int) -> int:
+    groups = defaultdict(int)
+
+    for i in range(1, n + 1):
+        s = sum(map(int, str(i)))
+        groups[s] += 1
+
+    max_size = max(groups.values())
+
+    return sum(1 for v in groups.values() if v == max_size)
+
+
 assert countLargestGroup(13) == 4
 assert countLargestGroup(2) == 2
