@@ -47,6 +47,21 @@ def minSubsequence(nums: List[int]) -> List[int]:
     return ans
 
 
+# Time complexity: O(n log n)
+# Space complexity: O(n)
+def minSubsequence1(nums: List[int]) -> List[int]:
+    nums.sort(reverse=True)
+    sum_nums = sum(nums)
+    sum_subseq = 0
+    subseq = []
+    for num in nums:
+        sum_subseq += num
+        subseq.append(num)
+        if sum_subseq > sum_nums - sum_subseq:
+            break
+    return subseq
+
+
 assert minSubsequence([4, 3, 10, 9, 8]) == [10, 9]
 assert minSubsequence([4, 4, 7, 6, 7]) == [7, 7, 6]
 assert minSubsequence([6]) == [6]
