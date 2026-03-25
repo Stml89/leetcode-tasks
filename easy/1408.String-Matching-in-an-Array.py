@@ -44,6 +44,12 @@ def stringMatching(words: List[str]) -> List[str]:
     return ans
 
 
+# Time complexity: O(n^2 * m) where n is the number of words and m is the average length of the words
+# Space complexity: O(1)
+def stringMatching1(words: List[str]) -> List[str]:
+    return [word for word in words if any(word != other and word in other for other in words)]
+
+
 assert stringMatching(["mass", "as", "hero", "superhero"]) == ["as", "hero"]
 assert stringMatching(["leetcode", "et", "code"]) == ["et", "code"]
 assert stringMatching(["blue", "green", "bu"]) == []
