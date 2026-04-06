@@ -36,6 +36,20 @@ def kLengthApart(nums: List[int], k: int) -> bool:
     return True
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def kLengthApart1(nums: List[int], k: int) -> bool:
+    prev = -1
+
+    for i, num in enumerate(nums):
+        if num == 1:
+            if prev != -1 and i - prev - 1 < k:
+                return False
+            prev = i
+
+    return True
+
+
 assert kLengthApart([1, 0, 0, 1, 0, 0, 1], 2) == True
 assert kLengthApart([1, 0, 0, 1, 0, 1], 2) == False
 assert kLengthApart([1, 1, 1, 1, 1], 0) == True
