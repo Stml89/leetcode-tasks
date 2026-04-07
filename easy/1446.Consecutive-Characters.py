@@ -42,5 +42,17 @@ def maxPower(s: str) -> int:
     return max(max_val, count)
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def maxPower1(s: str) -> int:
+    power = [0] * 26
+
+    for i in range(len(s)):
+        power[ord(s[i]) - ord('a')] = max(power[ord(s[i]) - ord('a')],
+                                          1 + (power[ord(s[i - 1]) - ord('a')] if i > 0 and s[i] == s[i - 1] else 0))
+
+    return max(power)
+
+
 assert maxPower("leetcode") == 2
 assert maxPower("abbcccddddeeeeedcba") == 5
