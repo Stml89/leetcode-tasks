@@ -36,7 +36,7 @@ Each element of target should have a corresponding element in arr, and if it doe
 Hint 2
 To solve it easiely you can sort the two arrays and check if they are equal.
 """
-
+from collections import Counter
 from typing import List
 
 
@@ -44,6 +44,12 @@ from typing import List
 # Space complexity: O(n)
 def canBeEqual(target: List[int], arr: List[int]) -> bool:
     return sorted(target) == sorted(arr)
+
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+def canBeEqual1(target: List[int], arr: List[int]) -> bool:
+    return Counter(target) == Counter(arr)
 
 
 assert canBeEqual([1, 2, 3, 4], []) == False
