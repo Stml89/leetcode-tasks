@@ -51,6 +51,23 @@ def finalPrices(prices: List[int]) -> List[int]:
     return result
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def finalPrices1(prices: List[int]) -> List[int]:
+    stack = []
+    res = prices.copy()
+
+    for i in range(len(prices)):
+        while stack and prices[i] <= prices[stack[-1]]:
+            popIndex = stack.pop()
+
+            res[popIndex] -= prices[i]
+
+        stack.append(i)
+
+    return res
+
+
 assert finalPrices([1, 2, 3, 4, 5]) == [4, 2, 4, 2, 4]
 assert finalPrices([8, 4, 6, 2, 3]) == [4, 2, 4, 2, 3]
 assert finalPrices([10, 1, 1, 6]) == [9, 0, 1, 6]
