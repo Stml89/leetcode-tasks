@@ -40,5 +40,13 @@ def canMakeArithmeticProgression(arr: List[int]) -> bool:
     return True
 
 
+# Time complexity: O(n log n)
+# Space complexity: O(1)
+def canMakeArithmeticProgression1(arr: List[int]) -> bool:
+    arr.sort()
+    common_diff = arr[1] - arr[0]
+    return all(arr[i] - arr[i - 1] == common_diff for i in range(2, len(arr)))
+
+
 assert canMakeArithmeticProgression([3, 5, 1]) == True
 assert canMakeArithmeticProgression([1, 2, 4]) == False
