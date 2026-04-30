@@ -58,6 +58,17 @@ def reformatDate(date: str) -> str:
     return f"{year}-{month_dict[month]}-{day.zfill(2)}"
 
 
+# Time complexity: O(1)
+# Space complexity: O(1)
+def reformatDate1(date: str) -> str:
+    day, month, year = date.split()
+    day = day[:-2]
+    date = "-".join([day, month, year])
+    date = datetime.datetime.strptime(date, "%d-%b-%Y")
+
+    return date.strftime("%Y-%m-%d")
+
+
 assert reformatDate("20th Oct 2052") == "2052-10-20"
 assert reformatDate("6th Jun 1933") == "1933-06-06"
 assert reformatDate("26th May 1960") == "1960-05-26"
