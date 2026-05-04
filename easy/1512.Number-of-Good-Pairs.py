@@ -57,6 +57,19 @@ def numIdenticalPairs1(nums: List[int]) -> int:
     return conter
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def numIdenticalPairs2(nums: List[int]) -> int:
+    result = 0
+    count = Counter()
+
+    for i in nums:
+        result = result + count[i]
+        count[i] += 1
+
+    return result
+
+
 assert numIdenticalPairs([1, 2, 3, 1, 1, 3]) == 4
 assert numIdenticalPairs([1, 1, 1, 1]) == 6
 assert numIdenticalPairs([1, 2, 3]) == 0
