@@ -42,5 +42,16 @@ def countOdds1(low: int, high: int) -> int:
     return (high + 1) // 2 - low // 2
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def countOdds2(low: int, high: int) -> int:
+    cntr = 0
+    for i in range(low, high + 1):
+        if i % 2 == 1:
+            cntr += 1
+
+    return cntr
+
+
 assert countOdds(3, 7) == 3
 assert countOdds(8, 10) == 1
