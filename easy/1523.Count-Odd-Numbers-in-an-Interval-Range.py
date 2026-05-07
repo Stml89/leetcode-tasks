@@ -36,5 +36,11 @@ def countOdds(low: int, high: int) -> int:
     return (high - low) // 2 + 1
 
 
+# Time complexity: O(1)
+# Space complexity: O(1)
+def countOdds1(low: int, high: int) -> int:
+    return (high + 1) // 2 - low // 2
+
+
 assert countOdds(3, 7) == 3
 assert countOdds(8, 10) == 1
