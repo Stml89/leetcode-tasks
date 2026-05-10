@@ -28,5 +28,16 @@ def reverseBits(n: int) -> int:
     return int('{:08b}'.format(n)[::-1], 2)
 
 
+# Time complexity: O(1)
+# Space complexity: O(1)
+def reverseBits1(n: int) -> int:
+    result = 0
+    for i in range(32):
+        result <<= 1
+        result |= n & 1
+        n >>= 1
+    return result
+
+
 reverseBits(int('00000010100101000001111010011100'))
 reverseBits(int('00000010100101000001111010011100'))
