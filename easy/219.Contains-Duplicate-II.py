@@ -37,6 +37,22 @@ def containsNearbyDuplicate(nums: List[int], k: int) -> bool:
     return False
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def containsNearbyDuplicate1(nums: List[int], k: int) -> bool:
+    r = set()
+    for indx, value in enumerate(nums):
+        if value in r:
+            return True
+        else:
+            r.add(value)
+
+        if len(r) > k:
+            r.remove(nums[indx - k])
+
+    return False
+
+
 assert containsNearbyDuplicate(nums=[1, 2, 3, 1], k=3)
 assert containsNearbyDuplicate(nums=[1, 0, 1, 1], k=1)
 assert not containsNearbyDuplicate(nums=[1, 2, 3, 1, 2, 3], k=2)
