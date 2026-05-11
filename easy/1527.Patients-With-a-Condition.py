@@ -41,4 +41,4 @@ Explanation: Bob and George both have a condition that starts with DIAB1.
 """
 # select *
 # from Patients
-# where conditions like "%DIAB1%"
+# where conditions like "DIAB1%" or conditions like "% DIAB1%"
