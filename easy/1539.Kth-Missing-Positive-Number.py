@@ -67,11 +67,10 @@ def findKthPositive1(arr: List[int], k: int) -> int:
 # Space complexity: O(n)
 def findKthPositive2(arr: List[int], k: int) -> int:
     arr_set = set(arr)
-    count = k
     i = 1
-    while count > 0:
+    while k > 0:
         if i not in arr_set:
-            count -= 1
+            k -= 1
         i += 1
 
     return i - 1
