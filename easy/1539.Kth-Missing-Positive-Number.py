@@ -51,5 +51,17 @@ def findKthPositive(arr: List[int], k: int) -> int:
     return arr[right] + (k - missing_at_right)
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def findKthPositive1(arr: List[int], k: int) -> int:
+    missing_count = 0
+    for i in range(1, arr[-1] + k + 1):
+        if i not in arr:
+            missing_count += 1
+            if missing_count == k:
+                return i
+    return -1
+
+
 assert findKthPositive([2, 3, 4, 7, 11], 5) == 9
 assert findKthPositive([1, 2, 3, 4], 2) == 6
