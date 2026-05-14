@@ -63,5 +63,19 @@ def findKthPositive1(arr: List[int], k: int) -> int:
     return -1
 
 
+# Time complexity: O(n+k)
+# Space complexity: O(n)
+def findKthPositive2(arr: List[int], k: int) -> int:
+    arr_set = set(arr)
+    count = k
+    i = 1
+    while count > 0:
+        if i not in arr_set:
+            count -= 1
+        i += 1
+
+    return i - 1
+
+
 assert findKthPositive([2, 3, 4, 7, 11], 5) == 9
 assert findKthPositive([1, 2, 3, 4], 2) == 6
