@@ -51,6 +51,21 @@ def makeGood(s: str) -> str:
     return ''.join(stack)
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def makeGood1(s: str) -> str:
+    stack = []
+    i = 0
+    while i < len(s):
+        if stack and stack[-1] != s[i] and stack[-1].lower() == s[i].lower():
+            stack.pop()
+        else:
+            stack.append(s[i])
+        i += 1
+
+    return ''.join(stack)
+
+
 assert makeGood("leetcode") == "leetcode"
 assert makeGood("leEeetcode") == "leetcode"
 assert makeGood("abBAcC") == ""
