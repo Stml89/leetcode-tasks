@@ -37,6 +37,16 @@ def thousandSeparator(n: int) -> str:
     return ".".join(result[::-1])
 
 
+# Time complexity: O(log n)
+# Space complexity: O(log n)
+def thousandSeparator1(n: int) -> str:
+    s = str(n)
+    res = []
+    for i in range(len(s) - 1, -1, -3):
+        res.append(s[max(0, i - 2):i + 1])
+    return '.'.join(res[::-1])
+
+
 assert thousandSeparator(987) == '987'
 assert thousandSeparator(1234) == '1.234'
 assert thousandSeparator(123456789) == '123.456.789'
