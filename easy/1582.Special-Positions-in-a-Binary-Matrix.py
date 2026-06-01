@@ -54,5 +54,23 @@ def numSpecial(mat: List[List[int]]) -> int:
     return count
 
 
+# Time complexity: O(m * n)
+# Space complexity: O(m + n)
+def numSpecial1(mat: List[List[int]]) -> int:
+    m = len(mat)
+    n = len(mat[0])
+
+    row = [sum(row) for row in mat]
+    col = [sum(col) for col in zip(*mat)]
+    count = 0
+
+    for r in range(m):
+        for c in range(n):
+            if mat[r][c] == 1 and row[r] == 1 and col[c] == 1:
+                count += 1
+
+    return count
+
+
 assert numSpecial([[1, 0, 0], [0, 0, 1], [1, 0, 0]]) == 1
 assert numSpecial([[1, 0, 0], [0, 1, 0], [0, 0, 1]]) == 3
