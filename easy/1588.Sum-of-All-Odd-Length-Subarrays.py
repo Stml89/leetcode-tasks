@@ -43,12 +43,23 @@ from typing import List
 
 # Time complexity: O(n^2)
 # Space complexity: O(1)
-def sumOddLengthSubarrays(arr: List[int]) -> int:
+def sumOddLengthSubarrays1(arr: List[int]) -> int:
     count = 0
     for i in range(len(arr)):
         for y in range(i, len(arr)):
             if (y - i) % 2 == 0:
                 count += sum(arr[i:y + 1])
+    return count
+
+
+# Time complexity: O(n)
+# Space complexity: O(1)
+def sumOddLengthSubarrays(arr: List[int]) -> int:
+    count = 0
+    for i in range(len(arr)):
+        left = i + 1
+        right = len(arr) - i
+        count += arr[i] * ((left * right + 1) // 2)
     return count
 
 
