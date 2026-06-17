@@ -52,6 +52,25 @@ def specialArray(nums: List[int]) -> int:
     return -1
 
 
+# Time complexity: O(n log n)
+# Space complexity: O(1)
+def specialArray1(nums: list[int]) -> int:
+    l, r = 1, len(nums)
+    while l <= r:
+        mid = (l + r) >> 1
+        cnt = sum(1 for num in nums if num >= mid)
+
+        if cnt == mid:
+            return mid
+
+        if cnt < mid:
+            r = mid - 1
+        else:
+            l = mid + 1
+
+    return -1
+
+
 assert specialArray([3, 5]) == 2
 assert specialArray([0, 0]) == -1
 assert specialArray([0, 4, 3, 0, 4]) == 3
