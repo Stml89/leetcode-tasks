@@ -32,6 +32,19 @@ Try finding every pair of indexes with equal characters
 """
 
 
+# Time complexity: O(n2)
+# Space complexity: O(1)
+def maxLengthBetweenEqualCharacters1(s: str) -> int:
+    n = len(s)
+    res = -1
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            if s[i] == s[j]:
+                res = max(res, j - i - 1)
+    return res
+
+
 # Time complexity: O(n)
 # Space complexity: O(1)
 def maxLengthBetweenEqualCharacters(s: str) -> int:
