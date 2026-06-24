@@ -72,5 +72,19 @@ def slowestKey(releaseTimes: List[int], keysPressed: str) -> str:
     return max_key
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def slowestKey1(releaseTimes: List[int], keysPressed: str) -> str:
+    ans = (releaseTimes[0], keysPressed[0])
+    n = len(releaseTimes)
+
+    for i in range(1, n):
+        duration = releaseTimes[i] - releaseTimes[i - 1]
+        curr = (duration, keysPressed[i])
+        ans = max(ans, curr)
+
+    return ans[1]
+
+
 assert slowestKey(releaseTimes=[9, 29, 49, 50], keysPressed="cbcd") == "c"
 assert slowestKey(releaseTimes=[12, 23, 36, 46, 62], keysPressed="spuda") == "a"
