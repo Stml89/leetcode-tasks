@@ -41,5 +41,12 @@ def maxWidthOfVerticalArea(points: List[List[int]]) -> int:
     return max_width
 
 
+# Time complexity: O(n log n)
+# Space complexity: O(n)
+def maxWidthOfVerticalArea1(points: List[List[int]]) -> int:
+    sorted_x = sorted(p[0] for p in points)  # extract x coords only
+    return max(b - a for a, b in zip(sorted_x, sorted_x[1:]))
+
+
 assert maxWidthOfVerticalArea([[8, 7], [9, 9], [7, 4], [9, 7]]) == 1
 assert maxWidthOfVerticalArea([[3, 1], [9, 0], [1, 0], [1, 4], [5, 3], [8, 8]]) == 3
