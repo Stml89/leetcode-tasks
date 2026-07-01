@@ -54,6 +54,19 @@ def canFormArray(arr: List[int], pieces: List[List[int]]) -> bool:
     return True
 
 
+# Time complexity: O(m * n)
+# Space complexity: O(1)
+def canFormArray1(arr: List[int], pieces: List[List[int]]) -> bool:
+    for p in pieces:
+        for q in range(len(p)):
+            if q == len(p) - 1:
+                if p[q] not in arr:
+                    return False
+            elif p[q] not in arr or arr.index(p[q]) == len(arr) - 1 or arr[arr.index(p[q]) + 1] != p[q + 1]:
+                return False
+    return True
+
+
 assert canFormArray(arr=[15, 88], pieces=[[88], [15]]) is True
 assert canFormArray(arr=[49, 18, 16], pieces=[[16, 18, 49]]) is False
 assert canFormArray(arr=[91, 4, 64, 78], pieces=[[78], [4, 64], [91]]) is True
