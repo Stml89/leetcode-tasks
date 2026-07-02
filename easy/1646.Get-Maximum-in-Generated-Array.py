@@ -64,6 +64,24 @@ def getMaximumGenerated(n: int) -> int:
     return max(nums)
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def getMaximumGenerated1(n: int) -> int:
+    if n < 2:
+        return n
+
+    nums = [0] * (n + 1)
+    nums[1] = 1
+    max_n = (n // 2) + (n % 2)
+
+    for i in range(max_n):
+        nums[2 * i] = nums[i]
+
+        nums[2 * i + 1] = nums[i] + nums[i + 1]
+
+    return max(nums)
+
+
 assert getMaximumGenerated(n=7) == 3
 assert getMaximumGenerated(n=2) == 1
 assert getMaximumGenerated(n=3) == 2
