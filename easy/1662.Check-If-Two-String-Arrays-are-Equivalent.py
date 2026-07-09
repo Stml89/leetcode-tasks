@@ -41,5 +41,20 @@ def arrayStringsAreEqual(word1: List[str], word2: List[str]) -> bool:
     return ''.join(word1) == ''.join(word2)
 
 
+# Time complexity: O(n + m)
+# Space complexity: O(n + m)
+def arrayStringsAreEqual1(word1: List[str], word2: List[str]) -> bool:
+    s1, s2 = '', ''
+
+    for word in word1:
+        s1 = s1 + word
+    for word in word2:
+        s2 = s2 + word
+
+    if s1 == s2:
+        return True
+    return False
+
+
 assert arrayStringsAreEqual(["ab", "c"], ["a", "bc"]) is True
 assert arrayStringsAreEqual(["a", "cb"], ["ab", "c"]) is False
