@@ -43,6 +43,18 @@ def maxRepeating(sequence: str, word: str) -> int:
     return k
 
 
+# Time complexity: O(k * m)
+# Space complexity: O(1)
+def maxRepeating1(sequence: str, word: str) -> int:
+    tmp = word
+    counter = 0
+
+    while tmp in sequence:
+        tmp += word
+        counter += 1
+    return counter
+
+
 assert maxRepeating("ababc", "ab") == 2
 assert maxRepeating("ababc", "ba") == 1
 assert maxRepeating("ababc", "ac") == 0
