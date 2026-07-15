@@ -47,6 +47,21 @@ def maximumWealth(accounts: List[List[int]]) -> int:
     return max(sum(customer) for customer in accounts)
 
 
+# Time complexity: O(k * m)
+# Space complexity: O(1)
+def maximumWealth1(accounts: List[List[int]]) -> int:
+    n = len(accounts)
+    max = 0
+    sum1 = 0
+    for i in range(n):
+        sum1 = 0
+        for j in range(len(accounts[i])):
+            sum1 += accounts[i][j]
+        if sum1 > max:
+            max = sum1
+    return max
+
+
 assert maximumWealth([[1, 2, 3], [3, 2, 1]]) == 6
 assert maximumWealth([[1, 5], [7, 3], [3, 5]]) == 10
 assert maximumWealth([[2, 8, 7], [7, 1, 3], [1, 9, 5]]) == 17
