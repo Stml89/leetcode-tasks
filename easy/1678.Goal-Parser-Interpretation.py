@@ -48,8 +48,13 @@ def interpret(command: str) -> str:
             result.append("al")
             i += 4
 
-
     return ''.join(result)
+
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+def interpret1(command: str) -> str:
+    return command.replace("()", "o").replace("(al)", "al")
 
 
 assert interpret("G()(al)") == "Goal"
