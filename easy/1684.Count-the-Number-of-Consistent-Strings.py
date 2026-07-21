@@ -49,6 +49,19 @@ def countConsistentStrings(allowed: str, words: List[str]) -> int:
     return count
 
 
+# Time complexity: O(n * m), where n is the number of words and m is the average length of the words
+# Space complexity: O(1)
+def countConsistentStrings1(allowed: str, words: List[str]) -> int:
+    con = 0
+    for word in words:
+        for letter in word:
+            if letter not in allowed:
+                con -= 1
+                break
+        con += 1
+    return con
+
+
 assert countConsistentStrings("ab", ["ad", "bd", "aaab", "baa", "badab"]) == 2
 assert countConsistentStrings("abc", ["a", "b", "c", "ab", "ac", "bc", "abc"]) == 7
 assert countConsistentStrings("cad", ["cc", "acd", "b", "ba", "bac", "bad", "ac", "d"]) == 4
