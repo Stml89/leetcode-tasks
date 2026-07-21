@@ -47,3 +47,8 @@ def countConsistentStrings(allowed: str, words: List[str]) -> int:
             count += 1
 
     return count
+
+
+assert countConsistentStrings("ab", ["ad", "bd", "aaab", "baa", "badab"]) == 2
+assert countConsistentStrings("abc", ["a", "b", "c", "ab", "ac", "bc", "abc"]) == 7
+assert countConsistentStrings("cad", ["cc", "acd", "b", "ba", "bac", "bad", "ac", "d"]) == 4
