@@ -63,3 +63,5 @@ def numberOfMatches1(n: int) -> int:
 
 assert numberOfMatches(7) == 6
 assert numberOfMatches(14) == 13
+assert numberOfMatches(1) == 0
+assert numberOfMatches1(15) == 14
