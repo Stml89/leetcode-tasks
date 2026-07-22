@@ -55,5 +55,11 @@ def numberOfMatches(n: int) -> int:
     return matches
 
 
+# Time complexity: O(1)
+# Space complexity: O(1)
+def numberOfMatches1(n: int) -> int:
+    return n - 1
+
+
 assert numberOfMatches(7) == 6
 assert numberOfMatches(14) == 13
