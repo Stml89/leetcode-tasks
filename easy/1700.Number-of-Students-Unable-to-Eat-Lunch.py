@@ -60,5 +60,23 @@ def countStudents(students: List[int], sandwiches: List[int]) -> int:
     return 0
 
 
+# Time complexity: O(n^2)
+# Space complexity: O(n)
+def countStudents1(students: List[int], sandwiches: List[int]) -> int:
+    count = 0
+    while students:
+        if students[0] == sandwiches[0]:
+            students.pop(0)
+            sandwiches.pop(0)
+            count = 0
+        else:
+            students.append(students.pop(0))
+            count += 1
+            if count == len(students):
+                break
+
+    return len(students)
+
+
 assert countStudents(students=[1, 1, 0, 0], sandwiches=[0, 1, 0, 1]) == 0
 assert countStudents(students=[1, 1, 1, 0, 0, 1], sandwiches=[1, 0, 0, 0, 1, 1]) == 3
