@@ -40,5 +40,22 @@ def halvesAreAlike(s: str) -> bool:
     return True if count_a == count_b else False
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def halvesAreAlike1(s: str) -> bool:
+    n = len(s)
+    a = s[:n // 2]
+    b = s[n // 2:]
+    av = 0
+    bv = 0
+    for i in a:
+        if i.lower() in "aeiou":
+            av += 1
+    for i in b:
+        if i.lower() in "aeiou":
+            bv += 1
+    return av == bv
+
+
 assert halvesAreAlike("book") == True
 assert halvesAreAlike("textbook") == False
