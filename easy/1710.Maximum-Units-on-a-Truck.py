@@ -37,6 +37,7 @@ Sort the box types with the number of units per box non-increasingly.
 Hint 3
 Iterate on the box types and take from each type as many as you can.
 """
+import heapq
 from typing import List
 
 
@@ -57,6 +58,32 @@ def maximumUnits(boxTypes: List[List[int]], truckSize: int) -> int:
         truckSize -= boxes_to_take
 
     return total_units
+
+
+# Time complexity: O(n log n), where n is the number of box types
+# Space complexity: O(n)
+def maximumUnits1(boxTypes: List[List[int]], truckSize: int) -> int:
+    heap = []
+
+    for numOfBoxes, noOfUnits in boxTypes:
+        heapq.heappush(heap, (-noOfUnits, numOfBoxes))
+
+    maxUnits = 0
+
+    while heap and truckSize > 0:
+        negUnits, noOfBoxes = heapq.heappop(heap)
+        noOfUnits = -negUnits
+
+        if truckSize - noOfBoxes >= 0:
+            maxUnits += (noOfUnits * noOfBoxes)
+            print(f"{noOfUnits},{noOfBoxes}={maxUnits}")
+            truckSize -= noOfBoxes
+        else:
+            maxUnits += (truckSize * noOfUnits)
+            truckSize -= noOfBoxes
+            print(maxUnits)
+
+    return maxUnits
 
 
 assert maximumUnits([[1, 3], [2, 2], [3, 1]], 4) == 8
