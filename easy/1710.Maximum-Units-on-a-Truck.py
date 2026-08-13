@@ -37,6 +37,7 @@ Sort the box types with the number of units per box non-increasingly.
 Hint 3
 Iterate on the box types and take from each type as many as you can.
 """
+from itertools import islice, repeat
 import heapq
 from typing import List
 
@@ -84,6 +85,13 @@ def maximumUnits1(boxTypes: List[List[int]], truckSize: int) -> int:
             print(maxUnits)
 
     return maxUnits
+
+
+# Time complexity: O(n log n + N), where n is the number of box types
+# Space complexity: O(n)
+def maximumUnits2(arr: List[List[int]], N: int) -> int:
+    arr = sorted(arr, key=lambda t: t[1], reverse=True)
+    return sum(islice((e for q, x in arr for e in repeat(x, q)), 0, N))
 
 
 assert maximumUnits([[1, 3], [2, 2], [3, 1]], 4) == 8
