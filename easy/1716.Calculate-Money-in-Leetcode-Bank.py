@@ -48,6 +48,21 @@ def totalMoney(n: int) -> int:
     return res
 
 
+# Time complexity: O(1)
+# Space complexity: O(1)
+def totalMoney1(n: int) -> int:
+    weeks = n // 7
+    low = 28
+    high = 28 + 7 * (weeks - 1)
+    res = weeks * (low + high) // 2
+
+    monday = weeks + 1
+    for i in range(n % 7):
+        res += i + monday
+
+    return res
+
+
 assert totalMoney(4) == 10
 assert totalMoney(10) == 37
 assert totalMoney(20) == 96
