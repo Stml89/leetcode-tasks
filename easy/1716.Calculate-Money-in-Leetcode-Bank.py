@@ -63,6 +63,16 @@ def totalMoney1(n: int) -> int:
     return res
 
 
+# Time complexity: O(1)
+# Space complexity: O(1)
+def totalMoney2(n: int) -> int:
+    SUM = lambda x: (x * (x + 1)) >> 1
+    weeks = n // 7
+    res = SUM(weeks - 1) * 7 + weeks * SUM(7)
+    res += SUM(n % 7) + weeks * (n % 7)
+    return res
+
+
 assert totalMoney(4) == 10
 assert totalMoney(10) == 37
 assert totalMoney(20) == 96
