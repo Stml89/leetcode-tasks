@@ -44,6 +44,14 @@ def decode(encoded: List[int], first: int) -> List[int]:
 
     return arr
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def decode1(encoded: List[int], first: int) -> List[int]:
+    arr = [first]
+    for i in range(len(encoded)):
+        arr.append(arr[i] ^ encoded[i])
+    return arr
+
 
 assert decode(encoded=[1, 2, 3], first=1) == [1, 0, 2, 1]
 assert decode(encoded=[6, 2, 7, 3], first=4) == [4, 2, 0, 7, 4]
