@@ -32,6 +32,7 @@ Calculate maxSize by iterating over the given rectangles and maximizing the answ
 Hint 3
 Then iterate again on the rectangles and calculate the number whose values = maxSize.
 """
+from collections import Counter
 from typing import List
 
 
@@ -50,6 +51,12 @@ def countGoodRectangles(rectangles: List[List[int]]) -> int:
             count += 1
 
     return count
+
+
+# Time complexity: O(n + k log k)
+# Space complexity: O(k)
+def countGoodRectangles1(rectangles: List[List[int]]) -> int:
+    return sorted(Counter([min(i) for i in rectangles]).items(), key=lambda x: x[0], reverse=True)[0][1]
 
 
 assert countGoodRectangles([[5, 8], [3, 9], [5, 12], [16, 5]]) == 3
