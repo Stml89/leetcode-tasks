@@ -43,6 +43,18 @@ def largestAltitude(gain: List[int]) -> int:
     return max_altitude
 
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+def largestAltitude1(gain: List[int]) -> int:
+    height = []
+    height.append(0)
+    i = 0
+    while i < len(gain):
+        height.append(height[i] + gain[i])
+        i += 1
+    return max(height)
+
+
 assert largestAltitude([-5, 1, 5, 0, -7]) == 1
 assert largestAltitude([-4, -3, -2, -1, 4, 3, 2]) == 0
 assert largestAltitude([1, 2, 3, 4, 5]) == 15
