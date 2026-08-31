@@ -58,6 +58,18 @@ def countBalls(lowLimit: int, highLimit: int) -> int:
     return max(box_count.values())
 
 
+# Time complexity: O(n * d)
+# Space complexity: O(n)
+def countBalls1(lowLimit: int, highLimit: int) -> int:
+    box_count = {}
+
+    for ball_number in range(lowLimit, highLimit + 1):
+        box_number = sum(int(digit) for digit in str(ball_number))
+        box_count[box_number] = box_count.get(box_number, 0) + 1
+
+    return max(box_count.values())
+
+
 assert countBalls(1, 10) == 2
 assert countBalls(5, 15) == 2
 assert countBalls(19, 28) == 2
