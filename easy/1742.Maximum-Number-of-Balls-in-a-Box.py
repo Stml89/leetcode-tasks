@@ -70,6 +70,19 @@ def countBalls1(lowLimit: int, highLimit: int) -> int:
     return max(box_count.values())
 
 
+# Time complexity: O(n * d)
+# Space complexity: O(1)
+def countBalls2(lowLimit: int, highLimit: int) -> int:
+    cnt = [0] * 50
+    for x in range(lowLimit, highLimit + 1):
+        y = 0
+        while x:
+            y += x % 10
+            x //= 10
+        cnt[y] += 1
+    return max(cnt)
+
+
 assert countBalls(1, 10) == 2
 assert countBalls(5, 15) == 2
 assert countBalls(19, 28) == 2
