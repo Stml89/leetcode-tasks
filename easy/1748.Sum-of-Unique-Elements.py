@@ -37,6 +37,16 @@ def sumOfUnique(nums: List[int]) -> int:
     return sum(num for num, freq in count.items() if freq == 1)
 
 
+# Time complexity: O(n^2)
+# Space complexity: O(n)
+def sumOfUnique1(x: List[int]) -> int:
+    y = []
+    for i in x:
+        if x.count(i) == 1:
+            y.append(i)
+    return sum(y)
+
+
 assert sumOfUnique([1, 2, 3, 4, 5]) == 15
 assert sumOfUnique([1, 1, 1, 1, 1]) == 0
 assert sumOfUnique([1, 2, 3, 2]) == 4
