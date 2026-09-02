@@ -47,6 +47,18 @@ def check(nums: List[int]) -> bool:
     return True
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def check1(nums: List[int]) -> bool:
+    n = len(nums)
+    count = 0
+    for i in range(n):
+        if nums[i] > nums[(i + 1) % n]:
+            count += 1
+
+    return count <= 1
+
+
 assert check([3, 4, 5, 1, 2]) == True
 assert check([2, 1, 3, 4]) == False
 assert check([1, 2, 3]) == True
