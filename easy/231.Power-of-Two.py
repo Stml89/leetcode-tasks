@@ -39,7 +39,7 @@ def isPowerOfTwo1(n: int) -> bool:
 
 # Time complexity: O(log n)
 # Space complexity: O(1)
-def isPowerOfTwo(n: int) -> bool:
+def isPowerOfTwo2(n: int) -> bool:
     if n <= 0:
         return False
 
@@ -47,6 +47,12 @@ def isPowerOfTwo(n: int) -> bool:
     while x < n:
         x *= 2
     return x == n
+
+
+# Time complexity: O(1)
+# Space complexity: O(1)
+def isPowerOfTwo3(n: int) -> bool:
+    return n > 0 and ((1 << 30) % n) == 0
 
 
 assert isPowerOfTwo(1) == True
