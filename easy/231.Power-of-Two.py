@@ -31,6 +31,12 @@ def isPowerOfTwo(n: int) -> bool:
     return n > 0 and (n & (n - 1)) == 0
 
 
+# Time complexity: O(1)
+# Space complexity: O(1)
+def isPowerOfTwo1(n: int) -> bool:
+    return n >= 0 and n.bit_count() == 1
+
+
 assert isPowerOfTwo(1) == True
 assert isPowerOfTwo(2) == True
 assert isPowerOfTwo(3) == False
