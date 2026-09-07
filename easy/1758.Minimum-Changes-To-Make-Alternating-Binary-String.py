@@ -57,9 +57,16 @@ def minOperations(s: str) -> int:
 
 # Time complexity: O(n)
 # Space complexity: O(1)
-def minOperations(s: str) -> int:
+def minOperations1(s: str) -> int:
     cnt = sum(c != '01'[i & 1] for i, c in enumerate(s))
     return min(cnt, len(s) - cnt)
+
+
+# Time complexity: O(n)
+# Space complexity: O(1)
+def minOperations2(s: str) -> int:
+    ops_start_zero = sum(1 for i, char in enumerate(s) if int(char) != i % 2)
+    return min(ops_start_zero, len(s) - ops_start_zero)
 
 
 assert minOperations("0100") == 1
