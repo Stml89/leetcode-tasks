@@ -55,6 +55,13 @@ def minOperations(s: str) -> int:
     return min(count_start_with_0, count_start_with_1)
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def minOperations(s: str) -> int:
+    cnt = sum(c != '01'[i & 1] for i, c in enumerate(s))
+    return min(cnt, len(s) - cnt)
+
+
 assert minOperations("0100") == 1
 assert minOperations("10") == 0
 assert minOperations("1111") == 2
