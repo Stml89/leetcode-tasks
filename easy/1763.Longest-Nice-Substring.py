@@ -56,6 +56,24 @@ def longestNiceSubstring(s: str) -> str:
     return longest_nice
 
 
+# Time complexity: O(n^2)
+# Space complexity: O(n)
+def longestNiceSubstring1(s: str) -> str:
+    if len(s) < 2:
+        return ""
+
+    chars = set(s)
+
+    for i, ch in enumerate(s):
+        if ch.swapcase() not in chars:
+            left = longestNiceSubstring1(s[:i])
+            right = longestNiceSubstring1(s[i + 1:])
+
+            return left if len(left) >= len(right) else right
+
+    return s
+
+
 assert longestNiceSubstring("YazaAay") == "aAa"
 assert longestNiceSubstring("Bb") == "Bb"
 assert longestNiceSubstring("c") == ""
