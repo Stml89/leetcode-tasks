@@ -48,6 +48,7 @@ def mergeAlternately(word1: str, word2: str) -> str:
         i += 1
         j += 1
     merged += word1[i:] + word2[j:]
+
     return merged
 
 
@@ -63,6 +64,19 @@ def mergeAlternately1(word1: str, word2: str) -> str:
     result.append(word2[len(result) // 2:])
 
     return "".join(result)
+
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+def mergeAlternately2(word1: str, word2: str) -> str:
+    final_str = []
+
+    for letter1, letter2 in zip(word1, word2):
+        final_str.extend((letter1, letter2))
+
+    min_len = len(final_str) // 2
+
+    return "".join(final_str) + word1[min_len:] + word2[min_len:]
 
 
 assert mergeAlternately("abc", "pqr") == "apbqcr"
