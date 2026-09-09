@@ -51,6 +51,20 @@ def mergeAlternately(word1: str, word2: str) -> str:
     return merged
 
 
+# Time complexity: O(n + m)
+# Space complexity: O(n + m)
+def mergeAlternately1(word1: str, word2: str) -> str:
+    result = []
+
+    for a, b in zip(word1, word2):
+        result.extend((a, b))
+
+    result.append(word1[len(result) // 2:])
+    result.append(word2[len(result) // 2:])
+
+    return "".join(result)
+
+
 assert mergeAlternately("abc", "pqr") == "apbqcr"
 assert mergeAlternately("ab", "pqrs") == "apbqrs"
 assert mergeAlternately("abcd", "pq") == "apbqcd"
