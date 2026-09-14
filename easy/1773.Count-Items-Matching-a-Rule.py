@@ -49,6 +49,13 @@ def countMatches(items: List[List[str]], ruleKey: str, ruleValue: str) -> int:
     return count
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def countMatches1(items: List[List[str]], ruleKey: str, ruleValue: str) -> int:
+    idx = 0 if ruleKey == "type" else (1 if ruleKey == "color" else 2)
+    return sum(1 for item in items if item[idx] == ruleValue)
+
+
 assert countMatches(items=[["phone", "blue", "pixel"], ["computer", "silver", "lenovo"], ["phone", "gold", "iphone"]],
                     ruleKey="color", ruleValue="silver") == 1
 assert countMatches(items=[["phone", "blue", "pixel"], ["computer", "silver", "phone"], ["phone", "gold", "iphone"]],
