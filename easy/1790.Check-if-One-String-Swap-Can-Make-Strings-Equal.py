@@ -64,6 +64,20 @@ def areAlmostEqual1(s1: str, s2: str) -> bool:
     return len(diff) == 0 or (len(diff) == 2 and diff[0] == diff[1][::-1])
 
 
+# Time Complexity: O(n log n)
+# Space Complexity O(n + m)
+def areAlmostEqual2(s1: str, s2: str) -> bool:
+    if sorted(s1) == sorted(s2):
+        diff = 0
+        for i, j in zip(s1, s2):
+            if i != j:
+                diff += 1
+
+        if diff <= 2:
+            return True
+    return False
+
+
 assert areAlmostEqual(s1="bank", s2="kanb") is True
 assert areAlmostEqual(s1="attack", s2="defend") is False
 assert areAlmostEqual(s1="kelb", s2="kelb") is True
