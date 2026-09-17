@@ -56,6 +56,14 @@ def areAlmostEqual(s1: str, s2: str) -> bool:
     return s1[i] == s2[j] and s1[j] == s2[i]
 
 
+# Time Complexity: O(min(n, m))
+# Space Complexity O(min(n, m))
+def areAlmostEqual1(s1: str, s2: str) -> bool:
+    diff = [(a, b) for a, b in zip(s1, s2) if a != b]
+
+    return len(diff) == 0 or (len(diff) == 2 and diff[0] == diff[1][::-1])
+
+
 assert areAlmostEqual(s1="bank", s2="kanb") is True
 assert areAlmostEqual(s1="attack", s2="defend") is False
 assert areAlmostEqual(s1="kelb", s2="kelb") is True
