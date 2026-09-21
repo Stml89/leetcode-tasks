@@ -51,5 +51,11 @@ def findCenter(edges: List[List[int]]) -> int:
     return b
 
 
+# Time Complexity: O(1)
+# Space Complexity O(1)
+def findCenter1(edges: list[list[int]]) -> int:
+    return edges[0][0] if edges[0][0] in edges[1] else edges[0][1]
+
+
 assert findCenter([[1, 2], [2, 3], [4, 2]]) == 2
 assert findCenter([[1, 2], [5, 1], [1, 3], [1, 4]]) == 1
