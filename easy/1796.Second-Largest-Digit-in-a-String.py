@@ -46,6 +46,17 @@ def secondHighest(s: str) -> int:
     return second_largest
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def secondHighest1(s: str) -> int:
+    digits = {int(char) for char in s if char.isdigit()}
+
+    if len(digits) < 2:
+        return -1
+
+    return sorted(digits)[-2]
+
+
 assert secondHighest("dfa12321afd") == 2
 assert secondHighest("abc1111") == -1
 assert secondHighest("ck077") == 0
