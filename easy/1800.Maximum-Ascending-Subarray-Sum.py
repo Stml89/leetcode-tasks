@@ -51,6 +51,23 @@ def maxAscendingSum(nums: List[int]) -> int:
     return max_sum
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def maxAscendingSum1(nums: list[int]) -> int:
+    current_sum = nums[0]
+    max_sum = nums[0]
+
+    for i in range(1, len(nums)):
+        if nums[i] > nums[i - 1]:
+            current_sum += nums[i]
+        else:
+            current_sum = nums[i]
+
+        max_sum = max(max_sum, current_sum)
+
+    return max_sum
+
+
 assert maxAscendingSum([10, 20, 30, 5, 10, 50]) == 65
 assert maxAscendingSum([10, 20, 30, 40, 50]) == 150
 assert maxAscendingSum([12, 17, 15, 13, 10, 11, 12]) == 33
