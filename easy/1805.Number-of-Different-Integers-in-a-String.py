@@ -46,6 +46,32 @@ def numDifferentIntegers(word: str) -> int:
     return len(numbers)
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+def numDifferentIntegers1(word: str) -> int:
+    numbers = set()
+    i = 0
+
+    while i < len(word):
+        if not word[i].isdigit():
+            i += 1
+            continue
+
+        j = i
+        while j < len(word) and word[j].isdigit():
+            j += 1
+
+        number = word[i:j].lstrip("0")
+
+        if number == "":
+            number = "0"
+
+        numbers.add(number)
+        i = j
+
+    return len(numbers)
+
+
 assert numDifferentIntegers("a123bc34d8ef34") == 3
 assert numDifferentIntegers("leet1234code234") == 2
 assert numDifferentIntegers("a1b01c001") == 1
