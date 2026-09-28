@@ -72,6 +72,23 @@ def numDifferentIntegers1(word: str) -> int:
     return len(numbers)
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+def numDifferentIntegers2(word: str) -> int:
+    res = set()
+    l = 0
+    r = 0
+    while r < len(word):
+        if word[r].isalpha():
+            r += 1
+        elif word[r].isdigit():
+            l = r
+            while r < len(word) and word[r].isdigit():
+                r += 1
+            res.add(int(word[l:r]))
+    return len(res)
+
+
 assert numDifferentIntegers("a123bc34d8ef34") == 3
 assert numDifferentIntegers("leet1234code234") == 2
 assert numDifferentIntegers("a1b01c001") == 1
