@@ -40,6 +40,12 @@ def squareIsWhite(coordinates: str) -> bool:
     return (column + row) % 2 == 1
 
 
+# Time Complexity: O(1)
+# Space Complexity: O(1)
+def squareIsWhite1(coordinates: str) -> bool:
+    return (ord(coordinates[0]) + int(coordinates[1])) % 2 == 0
+
+
 assert squareIsWhite("a1") is False
 assert squareIsWhite("h3") is True
 assert squareIsWhite("c7") is False
