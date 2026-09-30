@@ -50,8 +50,8 @@ def truncateSentence(s: str, k: int) -> str:
     return " ".join(words[:k])
 
 
-# Time Complexity: O(1)
-# Space Complexity: O(n)
+# Time Complexity: O(n)
+# Space Complexity: O(1)
 def truncateSentence1(s: str, k: int) -> str:
     spaces = 0
 
