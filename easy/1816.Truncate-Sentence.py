@@ -50,6 +50,21 @@ def truncateSentence(s: str, k: int) -> str:
     return " ".join(words[:k])
 
 
+# Time Complexity: O(1)
+# Space Complexity: O(n)
+def truncateSentence1(s: str, k: int) -> str:
+    spaces = 0
+
+    for i, char in enumerate(s):
+        if char == " ":
+            spaces += 1
+
+            if spaces == k:
+                return s[:i]
+
+    return s
+
+
 assert truncateSentence("Hello how are you Contestant", k=4) == "Hello how are you"
 assert truncateSentence("What is the solution to this problem", k=4) == "What is the solution"
 assert truncateSentence("chopper is not a tanuki", k=5) == "chopper is not a tanuki"
