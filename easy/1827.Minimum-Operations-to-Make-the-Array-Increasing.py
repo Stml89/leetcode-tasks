@@ -53,6 +53,20 @@ def minOperations(nums: List[int]) -> int:
     return operations
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def minOperations(nums: list[int]) -> int:
+    operations = 0
+    prev = nums[0]
+
+    for i in range(1, len(nums)):
+        current = max(nums[i], prev + 1)
+        operations += current - nums[i]
+        prev = current
+
+    return operations
+
+
 assert minOperations([1, 1, 1]) == 3
 assert minOperations([1, 5, 2, 4, 1]) == 14
 assert minOperations([8]) == 0
