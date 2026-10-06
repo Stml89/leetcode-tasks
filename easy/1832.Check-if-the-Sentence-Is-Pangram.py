@@ -38,5 +38,11 @@ def checkIfPangram(sentence: str) -> bool:
     return False
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def checkIfPangram1(sentence: str) -> bool:
+    return len(set(sentence)) == 26
+
+
 assert checkIfPangram("thequickbrownfoxjumpsoverthelazydog") is True
 assert checkIfPangram("leetcode") is False
