@@ -44,5 +44,20 @@ def checkIfPangram1(sentence: str) -> bool:
     return len(set(sentence)) == 26
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def checkIfPangram2(sentence: str) -> bool:
+    letters = {}
+    for i in sentence:
+        if i in letters.keys():
+            letters[i] += 1
+        else:
+            letters[i] = 1
+
+    if len(letters) == 26:
+        return True
+    return False
+
+
 assert checkIfPangram("thequickbrownfoxjumpsoverthelazydog") is True
 assert checkIfPangram("leetcode") is False
