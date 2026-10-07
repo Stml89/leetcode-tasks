@@ -23,7 +23,7 @@ Convert the given number into base k.
 """
 
 
-# Time Complexity: O(logₖ n)
+# Time Complexity: O(log n)
 # Space Complexity: O(1)
 def sumBase(n: int, k: int) -> int:
     digit_sum = 0
