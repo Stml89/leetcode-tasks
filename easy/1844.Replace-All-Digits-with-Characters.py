@@ -54,5 +54,22 @@ def replaceDigits(s: str) -> str:
     return "".join(chars)
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+def replaceDigits1(s: str) -> str:
+    def shift(char: str, x: int) -> str:
+        return chr(ord(char) + x)
+
+    result = []
+
+    for i, char in enumerate(s):
+        if i % 2 == 0:
+            result.append(char)
+        else:
+            result.append(shift(s[i - 1], int(char)))
+
+    return "".join(result)
+
+
 assert replaceDigits("a1c1e1") == ("abcdef")
 assert replaceDigits("a1b2c3d4e") == ("abbdcfdhe")
