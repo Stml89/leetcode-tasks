@@ -49,6 +49,18 @@ def getMinDistance(nums: list[int], target: int, start: int) -> int:
             return distance
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def getMinDistance1(nums: list[int], target: int, start: int) -> int:
+    min_distance = len(nums)
+
+    for i, num in enumerate(nums):
+        if num == target:
+            min_distance = min(min_distance, abs(i - start))
+
+    return min_distance
+
+
 assert getMinDistance(nums=[1, 2, 3, 4, 5], target=5, start=3) == 1
 assert getMinDistance(nums=[1], target=1, start=0) == 0
 assert getMinDistance(nums=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], target=1, start=0) == 0
