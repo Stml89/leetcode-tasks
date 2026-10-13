@@ -78,6 +78,29 @@ def maximumPopulation1(logs: List[List[int]]) -> int:
     return result_year
 
 
+# Time Complexity: O(n log n)
+# Space Complexity: O(n)
+def maximumPopulation2(logs: List[List[int]]) -> int:
+    events = {}
+
+    for birth, death in logs:
+        events[birth] = events.get(birth, 0) + 1
+        events[death] = events.get(death, 0) - 1
+
+    max_population = 0
+    current_population = 0
+    result_year = 0
+
+    for year in sorted(events):
+        current_population += events[year]
+
+        if current_population > max_population:
+            max_population = current_population
+            result_year = year
+
+    return result_year
+
+
 assert maximumPopulation([[1993, 1999], [2000, 2010]]) == 1993
 assert maximumPopulation([[1950, 1961], [1960, 1971], [1970, 1981]]) == 1960
 assert maximumPopulation([[1950, 2050]]) == 1950  # One person
