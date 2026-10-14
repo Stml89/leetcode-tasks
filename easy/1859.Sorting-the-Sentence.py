@@ -46,6 +46,15 @@ def sortSentence(s: str) -> str:
     return " ".join(result)
 
 
+# Time Complexity: O(n log n)
+# Space Complexity: O(n)
+def sortSentence1(s: str) -> str:
+    words = s.split()
+    words.sort(key=lambda word: int(word[-1]))
+
+    return " ".join(word[:-1] for word in words)
+
+
 assert sortSentence("is2 sentence4 This1 a3") == "This is a sentence"
 assert sortSentence("Myself2 Me1 I4 and3") == "Me Myself and I"
 assert sortSentence("Hello1") == "Hello"
