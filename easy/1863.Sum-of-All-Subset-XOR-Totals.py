@@ -93,6 +93,16 @@ def subsetXORSum2(nums: List[int]) -> int:
     return result
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def subsetXORSum3(nums: list[int]) -> int:
+    res = 0
+    for n in nums:
+        res = res | n
+
+    return res * 2 ** (len(nums) - 1)
+
+
 assert subsetXORSum([1, 3]) == 6
 assert subsetXORSum([5, 1, 6]) == 28
 assert subsetXORSum([3, 4, 5, 6, 7, 8]) == 480
