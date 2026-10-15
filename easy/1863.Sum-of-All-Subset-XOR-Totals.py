@@ -75,6 +75,24 @@ def subsetXORSum1(nums: List[int]) -> int:
     return dfs(0, 0)
 
 
+# Time Complexity: O(n * 2^n)
+# Space Complexity: O(1)
+def subsetXORSum2(nums: List[int]) -> int:
+    n = len(nums)
+    result = 0
+
+    for mask in range(1 << n):
+        current_xor = 0
+
+        for i in range(n):
+            if mask & (1 << i):
+                current_xor ^= nums[i]
+
+        result += current_xor
+
+    return result
+
+
 assert subsetXORSum([1, 3]) == 6
 assert subsetXORSum([5, 1, 6]) == 28
 assert subsetXORSum([3, 4, 5, 6, 7, 8]) == 480
