@@ -50,6 +50,23 @@ def nearestValidPoint(x: int, y: int, points: List[List[int]]) -> int:
     return min_index
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
+def nearestValidPoint1(x: int, y: int, points: List[List[int]]) -> int:
+    ans = -1
+    length = 10 ** 4
+
+    for i in range(len(points)):
+        if points[i][0] == x and abs(points[i][1] - y) < length:
+            length = abs(points[i][1] - y)
+            ans = i
+        if points[i][1] == y and abs(points[i][0] - x) < length:
+            length = abs(points[i][0] - x)
+            ans = i
+
+    return ans
+
+
 assert nearestValidPoint(3, 4, [[1, 2], [3, 1], [2, 4], [2, 3], [4, 4]]) == 2
 assert nearestValidPoint(3, 4, [[3, 4]]) == 0
 assert nearestValidPoint(3, 4, [[2, 3]]) == -1
