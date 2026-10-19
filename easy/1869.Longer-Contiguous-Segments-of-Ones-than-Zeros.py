@@ -95,6 +95,15 @@ def checkZeroOnes1(s: str) -> bool:
     return max_ones > max_zeros
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+def checkZeroOnes2(s: str) -> bool:
+    max_ones = max(len(segment) for segment in s.split("0"))
+    max_zeros = max(len(segment) for segment in s.split("1"))
+
+    return max_ones > max_zeros
+
+
 assert checkZeroOnes("1101") is True
 assert checkZeroOnes("111000") is False
 assert checkZeroOnes("110100010") is False
