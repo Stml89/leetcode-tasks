@@ -66,6 +66,35 @@ def checkZeroOnes(s: str) -> bool:
     return max_ones > max_zeros
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def checkZeroOnes1(s: str) -> bool:
+    max_ones = 0
+    max_zeros = 0
+
+    current_char = s[0]
+    current_length = 0
+
+    for char in s:
+        if char == current_char:
+            current_length += 1
+        else:
+            if current_char == "1":
+                max_ones = max(max_ones, current_length)
+            else:
+                max_zeros = max(max_zeros, current_length)
+
+            current_char = char
+            current_length = 1
+
+    if current_char == "1":
+        max_ones = max(max_ones, current_length)
+    else:
+        max_zeros = max(max_zeros, current_length)
+
+    return max_ones > max_zeros
+
+
 assert checkZeroOnes("1101") is True
 assert checkZeroOnes("111000") is False
 assert checkZeroOnes("110100010") is False
