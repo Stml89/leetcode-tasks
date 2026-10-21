@@ -38,6 +38,19 @@ def countGoodSubstrings(s: str) -> int:
     return result
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def countGoodSubstrings1(s: str) -> int:
+    result = 0
+
+    for i in range(len(s) - 2):
+        a, b, c = s[i], s[i + 1], s[i + 2]
+
+        if a != b and b != c and a != c:
+            result += 1
+
+    return result
+
 
 assert countGoodSubstrings("xyzzaz") == 1
 assert countGoodSubstrings("aababcabc") == 4
