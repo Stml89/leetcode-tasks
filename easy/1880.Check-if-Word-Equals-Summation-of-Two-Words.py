@@ -69,6 +69,20 @@ def isSumEqual1(firstWord: str, secondWord: str, targetWord: str) -> bool:
     return get_value(firstWord) + get_value(secondWord) == get_value(targetWord)
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def isSumEqual2(firstWord: str, secondWord: str, targetWord: str) -> bool:
+    def get_value(word: str) -> int:
+        result = 0
+
+        for char in word:
+            result = result * 10 + (ord(char) - ord('a'))
+
+        return result
+
+    return get_value(firstWord) + get_value(secondWord) == get_value(targetWord)
+
+
 assert isSumEqual("acb", "cba", "cdb") is True
 assert isSumEqual("aaa", "a", "aab") is False
 assert isSumEqual("aaa", "a", "aaaa") is True
