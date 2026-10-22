@@ -58,6 +58,16 @@ def isSumEqual(firstWord: str, secondWord: str, targetWord: str) -> bool:
     return get_value(firstWord) + get_value(secondWord) == get_value(targetWord)
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+def isSumEqual1(firstWord: str, secondWord: str, targetWord: str) -> bool:
+    values = {char: i for i, char in enumerate(ascii_lowercase)}
+
+    def get_value(word: str) -> int:
+        return int(''.join(str(values[char]) for char in word))
+
+    return get_value(firstWord) + get_value(secondWord) == get_value(targetWord)
+
 
 assert isSumEqual("acb", "cba", "cdb") is True
 assert isSumEqual("aaa", "a", "aab") is False
