@@ -65,6 +65,38 @@ def findRotation1(mat: list[list[int]], target: list[list[int]]) -> bool:
     return False
 
 
+# Time Complexity: O(n²)
+# Space Complexity: O(1)
+def findRotation2(mat: list[list[int]], target: list[list[int]]) -> bool:
+    n = len(mat)
+
+    for rotation in range(4):
+        is_equal = True
+
+        for i in range(n):
+            for j in range(n):
+                if rotation == 0:
+                    x, y = i, j
+                elif rotation == 1:
+                    x, y = n - 1 - j, i
+                elif rotation == 2:
+                    x, y = n - 1 - i, n - 1 - j
+                else:
+                    x, y = j, n - 1 - i
+
+                if mat[x][y] != target[i][j]:
+                    is_equal = False
+                    break
+
+            if not is_equal:
+                break
+
+        if is_equal:
+            return True
+
+    return False
+
+
 assert findRotation([[0, 1], [1, 0]], [[1, 0], [0, 1]]) is True
 assert findRotation([[0, 1], [1, 1]], [[1, 0], [0, 1]]) is False
 assert findRotation([[0, 0, 0], [0, 1, 0], [1, 1, 1]], [[1, 1, 1], [0, 1, 0], [0, 0, 0]]) is True
