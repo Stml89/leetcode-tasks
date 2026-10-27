@@ -54,3 +54,11 @@ User 14 did not login in 2020, so we do not include them in the result table.
 # WHERE time_stamp >= '2020-01-01'
 #   AND time_stamp < '2021-01-01'
 # GROUP BY user_id;
+
+
+# SELECT
+#     user_id,
+#     MAX(time_stamp) AS last_stamp
+# FROM Logins
+# WHERE YEAR(time_stamp) = 2020
+# GROUP BY user_id;
