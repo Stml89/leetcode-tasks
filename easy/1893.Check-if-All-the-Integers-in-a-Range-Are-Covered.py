@@ -43,6 +43,18 @@ def isCovered(ranges: list[list[int]], left: int, right: int) -> bool:
     return True
 
 
+# Time Complexity: O(len(ranges) * 50 + (right - left + 1))
+# Space Complexity: O(50)
+def isCovered1(ranges: list[list[int]], left: int, right: int) -> bool:
+    covered = [False] * 51
+
+    for start, end in ranges:
+        for number in range(start, end + 1):
+            covered[number] = True
+
+    return all(covered[number] for number in range(left, right + 1))
+
+
 assert isCovered([[1, 2], [3, 4], [5, 6]], 2, 5) is True
 assert isCovered([[1, 10], [10, 20]], 21, 21) is False
 assert isCovered([[1, 5]], 1, 5) is True
