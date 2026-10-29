@@ -57,6 +57,17 @@ def makeEqual1(words: list[str]) -> bool:
     return all(count % n == 0 for count in counts)
 
 
+# Time Complexity: O(n * m)
+# Space Complexity: O(1)
+def makeEqual(words: list[str]) -> bool:
+    n = len(words)
+
+    return all(
+        sum(word.count(char) for word in words) % n == 0
+        for char in 'abcdefghijklmnopqrstuvwxyz'
+    )
+
+
 assert makeEqual(["abc", "aabc", "bc"]) is True
 assert makeEqual(["ab", "a"]) is False
 assert makeEqual(["a", "a", "a"]) is True
