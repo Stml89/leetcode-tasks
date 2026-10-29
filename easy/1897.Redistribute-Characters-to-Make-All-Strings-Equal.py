@@ -43,6 +43,19 @@ def makeEqual(words: list[str]) -> bool:
     return all(count % len(words) == 0 for count in total.values())
 
 
+# Time Complexity: O(n * m)
+# Space Complexity: O(1)
+def makeEqual1(words: list[str]) -> bool:
+    counts = [0] * 26
+
+    for word in words:
+        for char in word:
+            counts[ord(char) - ord('a')] += 1
+
+    n = len(words)
+
+    return all(count % n == 0 for count in counts)
+
 
 assert makeEqual(["abc", "aabc", "bc"]) is True
 assert makeEqual(["ab", "a"]) is False
