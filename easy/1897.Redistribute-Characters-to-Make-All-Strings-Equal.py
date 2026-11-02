@@ -35,10 +35,10 @@ from collections import Counter
 # Time Complexity: O(n * m)
 # Space Complexity: O(1)
 def makeEqual(words: list[str]) -> bool:
-    total = Counter()
+    total = Counter() # type: ignore
 
     for word in words:
-        total.update(word)
+        total.update(word) # type: ignore
 
     return all(count % len(words) == 0 for count in total.values())
 
@@ -59,7 +59,7 @@ def makeEqual1(words: list[str]) -> bool:
 
 # Time Complexity: O(n * m)
 # Space Complexity: O(1)
-def makeEqual(words: list[str]) -> bool:
+def makeEqual2(words: list[str]) -> bool:
     n = len(words)
 
     return all(
