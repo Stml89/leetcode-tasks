@@ -63,6 +63,12 @@ def largestOddNumber2(num: str) -> str:
     return ""
 
 
+# Time Complexity: O(k), where k - number of even digits
+# Space Complexity: O(1)
+def largestOddNumber3(num: str) -> str:
+    return num.rstrip("02468")
+
+
 assert largestOddNumber("52") == "5"
 assert largestOddNumber("4206") == ""
 assert largestOddNumber("35427") == "35427"
