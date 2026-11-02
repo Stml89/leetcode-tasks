@@ -42,6 +42,17 @@ def largestOddNumber(num: str) -> str:
     return ""
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def largestOddNumber1(num: str) -> str:
+    last_odd = -1
+
+    for digit in "13579":
+        last_odd = max(last_odd, num.rfind(digit))
+
+    return num[:last_odd + 1]
+
+
 assert largestOddNumber("52") == "5"
 assert largestOddNumber("4206") == ""
 assert largestOddNumber("35427") == "35427"
