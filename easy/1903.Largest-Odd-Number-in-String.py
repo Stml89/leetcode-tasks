@@ -53,6 +53,16 @@ def largestOddNumber1(num: str) -> str:
     return num[:last_odd + 1]
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def largestOddNumber2(num: str) -> str:
+    for i, digit in enumerate(reversed(num)):
+        if int(digit) % 2:
+            return num[:len(num) - i]
+
+    return ""
+
+
 assert largestOddNumber("52") == "5"
 assert largestOddNumber("4206") == ""
 assert largestOddNumber("35427") == "35427"
