@@ -53,6 +53,24 @@ def canBeIncreasing(nums: List[int]):
     return False
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def canBeIncreasing1(nums: List[int]):
+    n = len(nums)
+
+    for i in range(1, n):
+        if nums[i - 1] >= nums[i]:
+            if i == 1 or nums[i - 2] < nums[i]:
+                return True
+
+            if i == n - 1 or nums[i - 1] < nums[i + 1]:
+                return True
+
+            return False
+
+    return True
+
+
 assert canBeIncreasing([1, 2, 10, 5, 7]) is True
 assert canBeIncreasing([2, 3, 1, 2]) is False
 assert canBeIncreasing([1, 1, 1]) is False
