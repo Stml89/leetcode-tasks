@@ -63,6 +63,20 @@ def maxProductDifference1(nums: List[int]) -> int:
     return max1 * max2 - min1 * min2
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def maxProductDifference2(nums: List[int]) -> int:
+    a=max(nums)
+    nums.remove(a)
+    b=max(nums)
+    nums.remove(b)
+    c=min(nums)
+    nums.remove(c)
+    d=min(nums)
+    nums.remove(d)
+    return a*b-c*d
+
+
 assert maxProductDifference([5, 6, 2, 7, 4]) == 34
 assert maxProductDifference([4, 2, 5, 9, 7, 4, 8]) == 64
 assert maxProductDifference([1, 2, 3, 4]) == 10
