@@ -55,6 +55,20 @@ def buildArray1(nums: List[int]) -> List[int]:
     return ans
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def buildArray2(nums: List[int]) -> List[int]:
+    n = len(nums)
+
+    for i in range(n):
+        nums[i] += (nums[nums[i]] % n) * n
+
+    for i in range(n):
+        nums[i] //= n
+
+    return nums
+
+
 assert buildArray([0, 2, 1, 5, 3, 4]) == [0, 1, 2, 4, 5, 3]
 assert buildArray([5, 0, 1, 2, 3, 4]) == [4, 5, 0, 1, 2, 3]
 assert buildArray([0]) == [0]
