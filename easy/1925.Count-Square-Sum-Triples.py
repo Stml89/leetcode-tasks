@@ -44,6 +44,20 @@ def countTriples(n: int) -> int:
     return result
 
 
+# Time Complexity: O(n²)
+# Space Complexity: O(n)
+def countTriples1(n: int) -> int:
+    squares = {i * i for i in range(1, n + 1)}
+    result = 0
+
+    for a in range(1, n + 1):
+        for b in range(1, n + 1):
+            if a * a + b * b in squares:
+                result += 1
+
+    return result
+
+
 assert countTriples(1) == 0
 assert countTriples(2) == 0
 assert countTriples(3) == 0
