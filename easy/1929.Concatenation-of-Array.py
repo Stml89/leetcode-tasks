@@ -37,6 +37,19 @@ def getConcatenation(nums: List[int]) -> List[int]:
     return nums + nums
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+def getConcatenation1(nums: List[int]) -> List[int]:
+    n = len(nums)
+    ans = [0] * (2 * n)
+
+    for i in range(n):
+        ans[i] = nums[i]
+        ans[i + n] = nums[i]
+
+    return ans
+
+
 assert getConcatenation([1, 2, 1]) == [1, 2, 1, 1, 2, 1]
 assert getConcatenation([1, 3, 2, 1]) == [1, 3, 2, 1, 1, 3, 2, 1]
 assert getConcatenation([5]) == [5, 5]
