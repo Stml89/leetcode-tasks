@@ -61,6 +61,17 @@ def canBeTypedWords1(text: str, brokenLetters: str) -> int:
     )
 
 
+# Time Complexity: O(n + m)
+# Space Complexity: O(k + w)
+def canBeTypedWords2(text: str, brokenLetters: str) -> int:
+    broken = set(brokenLetters)
+
+    return sum(
+        all(char not in broken for char in word)
+        for word in text.split()
+    )
+
+
 assert canBeTypedWords("hello world", "ad") == 1
 assert canBeTypedWords("leet code", "lt") == 1
 assert canBeTypedWords("leet code", "e") == 0
