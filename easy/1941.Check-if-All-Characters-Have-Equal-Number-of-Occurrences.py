@@ -35,6 +35,17 @@ def areOccurrencesEqual(s: str) -> bool:
     return len(set(freq.values())) == 1
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(k)
+def areOccurrencesEqual1(s: str) -> bool:
+    freq = {}
+
+    for char in s:
+        freq[char] = freq.get(char, 0) + 1
+
+    return len(set(freq.values())) == 1
+
+
 assert areOccurrencesEqual("abacbc") is True
 assert areOccurrencesEqual("aaabb") is False
 assert areOccurrencesEqual("a") is True
