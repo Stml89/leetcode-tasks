@@ -81,6 +81,20 @@ def getLucky1(s: str, k: int) -> int:
     return total
 
 
+# Time Complexity: O(n + k * log n)
+# Space Complexity: O(log n)
+def getLucky2(s: str, k: int) -> int:
+    total = sum(
+        sum(int(digit) for digit in str(ord(char) - ord('a') + 1))
+        for char in s
+    )
+
+    for _ in range(k - 1):
+        total = sum(map(int, str(total)))
+
+    return total
+
+
 assert getLucky("iiii", 1) == 36
 assert getLucky("leetcode", 2) == 6
 assert getLucky("zbax", 2) == 8
