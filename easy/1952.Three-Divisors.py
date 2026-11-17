@@ -43,6 +43,21 @@ def isThree(n: int) -> bool:
     return True
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def isThree1(n: int) -> bool:
+    count = 0
+
+    for i in range(1, n + 1):
+        if n % i == 0:
+            count += 1
+
+            if count > 3:
+                return False
+
+    return count == 3
+
+
 assert isThree(2) is False
 assert isThree(4) is True
 assert isThree(9) is True
