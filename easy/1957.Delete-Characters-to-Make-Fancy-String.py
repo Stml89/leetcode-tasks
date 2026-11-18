@@ -52,6 +52,26 @@ def makeFancyString(s: str) -> str:
     return ''.join(result)
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+def makeFancyString1(s: str) -> str:
+    result = []
+    count = 0
+    prev = None
+
+    for char in s:
+        if char == prev:
+            count += 1
+        else:
+            count = 1
+            prev = char
+
+        if count <= 2:
+            result.append(char)
+
+    return ''.join(result)
+
+
 assert makeFancyString("leeetcode") == "leetcode"
 assert makeFancyString("aaabaaaa") == "aabaa"
 assert makeFancyString("aab") == "aab"
