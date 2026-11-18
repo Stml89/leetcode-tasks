@@ -72,6 +72,15 @@ def makeFancyString1(s: str) -> str:
     return ''.join(result)
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+def makeFancyString2(s: str) -> str:
+    return ''.join(
+        char * min(2, len(list(group)))
+        for char, group in groupby(s)
+    )
+
+
 assert makeFancyString("leeetcode") == "leetcode"
 assert makeFancyString("aaabaaaa") == "aabaa"
 assert makeFancyString("aab") == "aab"
