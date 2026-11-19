@@ -68,6 +68,25 @@ def isPrefixString1(s: str, words: List[str]) -> bool:
     return False
 
 
+# Time Complexity: O(m)
+# Space Complexity: O(1)
+def isPrefixString2(s: str, words: List[str]) -> bool:
+    pos = 0
+
+    for word in words:
+        end = pos + len(word)
+
+        if end > len(s) or s[pos:end] != word:
+            return False
+
+        pos = end
+
+        if pos == len(s):
+            return True
+
+    return False
+
+
 assert isPrefixString("a", ["a", "b"]) is True
 assert isPrefixString("ab", ["a", "b", "c"]) is True
 assert isPrefixString("abc", ["a", "b"]) is False
