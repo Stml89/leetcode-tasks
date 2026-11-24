@@ -55,6 +55,12 @@ def numOfStrings(patterns: List[str], word: str) -> int:
     return cnt
 
 
+# Time Complexity: O(p * w)
+# Space Complexity: O(1)
+def numOfStrings1(patterns: List[str], word: str) -> int:
+    return sum(pattern in word for pattern in patterns)
+
+
 assert numOfStrings(["a", "abc", "bc", "d"], "abc") == 3
 assert numOfStrings(["a", "b", "c"], "aaaaabbbbb") == 2
 assert numOfStrings(["a", "a", "a"], "ab") == 3
