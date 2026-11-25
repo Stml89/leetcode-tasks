@@ -72,6 +72,32 @@ def validPath(n: int, edges: List[List[int]], source: int, destination: int) -> 
     return inner(source)
 
 
+# Time Complexity: O(n + e)
+# Space Complexity: O(n + e)
+def validPath1(n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+    graph = [[] for _ in range(n)]
+
+    for u, v in edges:
+        graph[u].append(v)
+        graph[v].append(u)
+
+    visited = {source}
+    queue = deque([source])
+
+    while queue:
+        node = queue.popleft()
+
+        if node == destination:
+            return True
+
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+    return False
+
+
 assert validPath(3, [[0, 1], [1, 2], [2, 0]], 0, 2) is True
 assert validPath(6, [[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]], 0, 5) is False
 assert validPath(1, [], 0, 0) is True
