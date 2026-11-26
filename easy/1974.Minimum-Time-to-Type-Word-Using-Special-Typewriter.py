@@ -76,6 +76,23 @@ def minTimeToType(word: str) -> int:
     return total
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def minTimeToType1(word: str) -> int:
+    total = 0
+    current = 0
+
+    for char in word:
+        target = ord(char) - ord('a')
+        clockwise = (target - current) % 26
+        counterclockwise = (current - target) % 26
+
+        total += min(clockwise, counterclockwise) + 1
+        current = target
+
+    return total
+
+
 assert minTimeToType("abc") == 5
 assert minTimeToType("bza") == 7
 assert minTimeToType("zjpc") == 34
